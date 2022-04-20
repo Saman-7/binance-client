@@ -1,9 +1,15 @@
 import { VFC } from "react";
+import Header from "./components/header";
 import Chart from "./components/useChart";
 
 const App: VFC = () => {
   //
-  return <Chart />;
+  return (
+    <>
+      <Header />
+      <Chart />
+    </>
+  );
 };
 
 export default App;
