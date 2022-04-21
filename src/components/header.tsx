@@ -4,21 +4,19 @@ import { ReactComponent as Menu } from "../svg/menu.svg";
 import { ReactComponent as Question } from "../svg/question.svg";
 import { ReactComponent as Setting } from "../svg/setting.svg";
 
-const HeaderStyled = styled.header`
+const HeaderContainer = styled.header`
   height: 64px;
   display: flex;
   justify-content: space-around;
   align-items: center;
   background-color: #161a1e;
-
-  & div {
-    color: white;
-  }
+  color: white;
+  border-bottom: 1px #3d3d3d solid;
 `;
 
 const Header = () => {
   return (
-    <HeaderStyled>
+    <HeaderContainer>
       <BinanceLogo style={{ maxWidth: "120px" }} />
       <Menu style={{ maxWidth: "20px" }} />
 
@@ -37,7 +35,7 @@ const Header = () => {
 
       <Question style={{ maxWidth: "25px" }} />
       <Setting style={{ maxWidth: "25px" }} />
-    </HeaderStyled>
+    </HeaderContainer>
   );
 };
 
