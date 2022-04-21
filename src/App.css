@@ -17,8 +17,8 @@
 .app {
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  grid-template-rows: 64px 50px;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: 64px 70px;
   grid-template-areas:
     "header header header"
     "daily daily market"
