@@ -8,34 +8,58 @@ const HeaderContainer = styled.header`
   grid-area: header;
   height: 64px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   background-color: #161a1e;
   color: white;
   border-bottom: 1px #3d3d3d solid;
 `;
 
+const BoxHeader = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  &.box-nav {
+    width: 50%;
+  }
+
+  &.box-set {
+    width: 30%;
+  }
+  & .register {
+    background-color: #fcd535;
+    color: black;
+    padding: 6px 12px;
+    border-radius: 4px;
+  }
+`;
+
 const Header = () => {
   return (
     <HeaderContainer>
-      <BinanceLogo style={{ maxWidth: "120px" }} />
-      <Menu style={{ maxWidth: "20px" }} />
-
-      <div>Buy Crypto</div>
-      <div>Trade</div>
-      <div>Markets</div>
-      <div>Derivatives</div>
-      <div>Earn</div>
-      <div>Finance</div>
-      <div>NFT</div>
-      <div>Log in</div>
-      <div>Register</div>
-      <div>Downloads</div>
-      <div>English</div>
-      <div>USD</div>
-
-      <Question style={{ maxWidth: "25px" }} />
-      <Setting style={{ maxWidth: "25px" }} />
+      <BoxHeader className="box-nav">
+        <BinanceLogo style={{ maxWidth: "120px" }} />
+        <Menu style={{ maxWidth: "20px" }} />
+        <div>Buy Crypto</div>
+        <div>Markets</div>
+        <div>Trade</div>
+        <div>Derivatives</div>
+        <div>Earn</div>
+        <div>Finance</div>
+        <div>NFT</div>
+      </BoxHeader>
+      <div style={{ width: "20%" }} />
+      <BoxHeader className="box-set">
+        <div>Log in</div>
+        <div className="register">Register</div>
+        <div>Downloads</div>
+        <div>English</div>
+        <span>|</span>
+        <div>USD</div>
+        <Question style={{ maxWidth: "25px" }} />
+        <Setting style={{ maxWidth: "25px" }} />
+      </BoxHeader>
     </HeaderContainer>
   );
 };
