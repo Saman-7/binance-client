@@ -4,6 +4,7 @@ import { ReactComponent as Play } from "../svg/play.svg";
 import { ReactComponent as Notebook } from "../svg/notebook.svg";
 
 const DailyHostoryContainer = styled.div`
+  grid-area: daily;
   height: 50px;
   padding: 10px 0px;
   display: flex;

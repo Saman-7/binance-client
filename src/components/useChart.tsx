@@ -26,7 +26,7 @@ const Chart: VFC = () => {
   if (loading) return <h1>Loading ...</h1>;
   if (error) return <h1>Error :/</h1>;
   return (
-    <div>
+    <div style={{ gridArea: "chart" }}>
       <ApexCharts series={series} options={apexOptions} type="candlestick" />
     </div>
   );

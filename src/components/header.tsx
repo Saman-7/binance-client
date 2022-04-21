@@ -5,6 +5,7 @@ import { ReactComponent as Question } from "../svg/question.svg";
 import { ReactComponent as Setting } from "../svg/setting.svg";
 
 const HeaderContainer = styled.header`
+  grid-area: header;
   height: 64px;
   display: flex;
   justify-content: space-around;
