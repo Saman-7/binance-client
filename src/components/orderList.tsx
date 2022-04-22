@@ -9,7 +9,7 @@ const OrderListContainer = styled.table`
   background-color: #161a1e;
   padding: 0px 20px;
   font-size: 12px;
-  border-right: 1px #3d3d3d solid;
+  border-right: 1px #252930 solid;
 
   & .header-list {
     display: flex;

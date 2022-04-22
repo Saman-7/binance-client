@@ -12,7 +12,7 @@ const HeaderContainer = styled.header`
   align-items: center;
   background-color: #161a1e;
   color: white;
-  border-bottom: 1px #3d3d3d solid;
+  border-bottom: 1px #252930 solid;
 `;
 
 const BoxHeader = styled.div`

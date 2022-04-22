@@ -10,7 +10,7 @@ const DailyHostoryContainer = styled.div`
   align-items: center;
   background-color: #161a1e;
   color: white;
-  border-bottom: 1px #3d3d3d solid;
+  border-bottom: 1px #252930 solid;
 
   & h1 {
     margin: 0px 25px 0px 0px;
@@ -43,7 +43,7 @@ const DailyHostoryContainer = styled.div`
 const DailyHistory = () => {
   return (
     <DailyHostoryContainer>
-      <div style={{ borderRight: "1px #3d3d3d solid" }}>
+      <div style={{ borderRight: "1px #252930 solid" }}>
         <h1>BTC/USDT</h1>
         <div style={{ display: "inline-flex", alignItems: "center" }}>
           <Notebook style={{ width: "1.2em", color: "#848e9c" }} />
