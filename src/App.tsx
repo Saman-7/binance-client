@@ -2,6 +2,7 @@ import "./App.css";
 import { VFC } from "react";
 import Header from "./components/header";
 import DailyHistory from "./components/dailyHistory";
+import OrderList from "./components/orderList";
 import Chart from "./components/useChart";
 
 const App: VFC = () => {
@@ -10,7 +11,7 @@ const App: VFC = () => {
     <div className="app">
       <Header />
       <DailyHistory />
-      <div style={{ gridArea: "price", backgroundColor: "yellow" }} />
+      <OrderList />
       <Chart />
       <div style={{ gridArea: "market", backgroundColor: "orange" }} />
       <div style={{ gridArea: "order", backgroundColor: "red" }} />
