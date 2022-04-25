@@ -6,6 +6,7 @@ import OrderList from "./components/orderList";
 import Chart from "./components/useChart";
 import Market from "./components/market";
 import Details from "./components/details";
+import Footer from "./components/footer";
 
 const App: VFC = () => {
   //
@@ -17,6 +18,7 @@ const App: VFC = () => {
       <Chart />
       <Market />
       <Details />
+      <Footer />
     </div>
   );
 };
