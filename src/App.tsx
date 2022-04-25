@@ -5,6 +5,7 @@ import DailyHistory from "./components/dailyHistory";
 import OrderList from "./components/orderList";
 import Chart from "./components/useChart";
 import Market from "./components/market";
+import Details from "./components/details";
 
 const App: VFC = () => {
   //
@@ -15,7 +16,7 @@ const App: VFC = () => {
       <OrderList />
       <Chart />
       <Market />
-      <div style={{ gridArea: "order", backgroundColor: "red" }} />
+      <Details />
     </div>
   );
 };
