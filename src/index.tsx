@@ -4,6 +4,8 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import { Normalize } from "styled-normalize";
+
 if (process.env.NODE_ENV === "development") {
   const whyDidYouRender = require("@welldone-software/why-did-you-render");
   whyDidYouRender(React, {
@@ -24,6 +26,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
+      <Normalize />
       <App />
     </ApolloProvider>
   </React.StrictMode>
