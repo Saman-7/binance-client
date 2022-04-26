@@ -19,7 +19,7 @@ const HeaderDetails = styled.div`
 `;
 
 const BodyDetails = styled.div`
-  height: 230px;
+  height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;

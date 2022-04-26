@@ -246,23 +246,23 @@ const OrderType = () => {
         <RadioForm>
           <div className="line">
             <label>
-              <input type="radio" name="percent" />
+              <input type="radio" name="usdt" readOnly checked />
               <div />
             </label>
             <label>
-              <input type="radio" name="percent" />
+              <input type="radio" name="usdt" />
               <div />
             </label>
             <label>
-              <input type="radio" name="percent" />
+              <input type="radio" name="usdt" />
               <div />
             </label>
             <label>
-              <input type="radio" name="percent" />
+              <input type="radio" name="usdt" />
               <div />
             </label>
             <label>
-              <input type="radio" name="percent" />
+              <input type="radio" name="usdt" />
               <div />
             </label>
           </div>
@@ -270,23 +270,23 @@ const OrderType = () => {
         <RadioForm>
           <div className="line">
             <label>
-              <input type="radio" name="percent" />
+              <input type="radio" name="btc" readOnly checked />
               <div />
             </label>
             <label>
-              <input type="radio" name="percent" />
+              <input type="radio" name="btc" />
               <div />
             </label>
             <label>
-              <input type="radio" name="percent" />
+              <input type="radio" name="btc" />
               <div />
             </label>
             <label>
-              <input type="radio" name="percent" />
+              <input type="radio" name="btc" />
               <div />
             </label>
             <label>
-              <input type="radio" name="percent" />
+              <input type="radio" name="btc" readOnly />
               <div />
             </label>
           </div>
@@ -303,8 +303,6 @@ const OrderType = () => {
           <span>Register Now</span>
         </ButtonLogin>
       </InputForm>
-
-      <div style={{ backgroundColor: "#1e2026", height: "100px" }} />
     </OrderTypeForm>
   );
 };

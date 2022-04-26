@@ -226,7 +226,7 @@ const Market = () => {
             <Item key={index}>
               <td>
                 <StarLogo style={{ width: "15px" }} />
-                <span>{price}</span>/USDT
+                <span>{price}</span>
               </td>
               <td>{amount}</td>
               <td>{time}</td>
@@ -248,46 +248,48 @@ const Market = () => {
         </div>
 
         <table style={{ width: "100%" }}>
-          <ItemActivities>
-            <td>
-              <span>ORN/USDT</span>
-              <span>16:28:06</span>
-            </td>
-            <td>
-              <span>-6.88%</span>
-              <span>New 24h Low</span>
-            </td>
-            <td>
-              <ArrowUp
-                style={{
-                  width: "45px",
-                  backgroundColor: "#15342D",
-                  color: "#0ecb81",
-                  borderRadius: "4px",
-                }}
-              />
-            </td>
-          </ItemActivities>
-          <ItemActivities>
-            <td>
-              <span>ORN/USDT</span>
-              <span>16:28:06</span>
-            </td>
-            <td>
-              <span>-6.88%</span>
-              <span>New 24h Low</span>
-            </td>
-            <td>
-              <ArrowUp
-                style={{
-                  width: "45px",
-                  backgroundColor: "#15342D",
-                  color: "#0ecb81",
-                  borderRadius: "4px",
-                }}
-              />
-            </td>
-          </ItemActivities>
+          <tbody>
+            <ItemActivities>
+              <td>
+                <span>ORN/USDT</span>
+                <span>16:28:06</span>
+              </td>
+              <td>
+                <span>-6.88%</span>
+                <span>New 24h Low</span>
+              </td>
+              <td>
+                <ArrowUp
+                  style={{
+                    width: "45px",
+                    backgroundColor: "#15342D",
+                    color: "#0ecb81",
+                    borderRadius: "4px",
+                  }}
+                />
+              </td>
+            </ItemActivities>
+            <ItemActivities>
+              <td>
+                <span>ORN/USDT</span>
+                <span>16:28:06</span>
+              </td>
+              <td>
+                <span>-6.88%</span>
+                <span>New 24h Low</span>
+              </td>
+              <td>
+                <ArrowUp
+                  style={{
+                    width: "45px",
+                    backgroundColor: "#15342D",
+                    color: "#0ecb81",
+                    borderRadius: "4px",
+                  }}
+                />
+              </td>
+            </ItemActivities>
+          </tbody>
         </table>
       </MarketActivities>
     </MarketContainer>

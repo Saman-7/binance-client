@@ -45,7 +45,7 @@ const DailyHistory = () => {
     <DailyHostoryContainer>
       <div style={{ borderRight: "1px #252930 solid" }}>
         <h1>BTC/USDT</h1>
-        <div style={{ display: "inline-flex", alignItems: "center" }}>
+        <div style={{ display: "flex", alignItems: "center" }}>
           <Notebook style={{ width: "1.2em", color: "#848e9c" }} />
           <p className="bitcoin-price">Bitcoin Price</p>
         </div>
@@ -75,7 +75,7 @@ const DailyHistory = () => {
         <p>1,442,216,580.47</p>
       </div>
       <div style={{ width: "20%" }} />
-      <div style={{ display: "inline-flex", color: "#848e9c" }}>
+      <div style={{ display: "flex", color: "#848e9c" }}>
         <Play style={{ width: "1.2em", marginRight: "5px" }} />
         <p>Spot Tutorial</p>
       </div>

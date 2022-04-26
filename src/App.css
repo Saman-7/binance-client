@@ -17,7 +17,7 @@
 .app {
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: 2fr 5fr 2fr;
   grid-template-rows: 64px 70px;
   grid-template-areas:
     "header header header"

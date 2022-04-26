@@ -22,11 +22,21 @@ const BoxHeader = styled.div`
 
   &.box-nav {
     width: 50%;
+
+    & div span {
+      font-size: 12px;
+      padding: 1px;
+      background-color: #fcd535;
+      color: black;
+      border-radius: 4px;
+      margin-left: 5px;
+    }
   }
 
   &.box-set {
     width: 30%;
   }
+
   & .register {
     background-color: #fcd535;
     color: black;
@@ -41,13 +51,17 @@ const Header = () => {
       <BoxHeader className="box-nav">
         <BinanceLogo style={{ maxWidth: "120px" }} />
         <Menu style={{ maxWidth: "20px" }} />
-        <div>Buy Crypto</div>
+        <div>
+          Buy Crypto<span>EUR</span>
+        </div>
         <div>Markets</div>
         <div>Trade</div>
         <div>Derivatives</div>
         <div>Earn</div>
         <div>Finance</div>
-        <div>NFT</div>
+        <div>
+          NFT<span>New</span>
+        </div>
       </BoxHeader>
       <div style={{ width: "20%" }} />
       <BoxHeader className="box-set">

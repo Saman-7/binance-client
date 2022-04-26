@@ -5,22 +5,11 @@ import { ReactComponent as BuyLogo } from "../svg/sellFormat.svg";
 import { ReactComponent as SellLogo } from "../svg/buyFormat.svg";
 import { ReactComponent as DotMenu } from "../svg/dotMenu.svg";
 
-const OrderListContainer = styled.table`
+const OrderListContainer = styled.div`
   background-color: #161a1e;
   padding: 0px 20px;
   font-size: 12px;
   border-right: 1px #252930 solid;
-
-  & .header-list {
-    display: flex;
-    justify-content: space-between;
-    margin: 10px 0px;
-    color: #848e9c;
-
-    th:nth-child(2) {
-      margin-right: 17px;
-    }
-  }
 `;
 
 const HeaderLogo = styled.div`
@@ -50,11 +39,35 @@ const HeaderLogo = styled.div`
   }
 `;
 
+const TableContainer = styled.table`
+  width: 100%;
+
+  & .header-list {
+    color: #848e9c;
+    & th {
+      text-align: right;
+      padding-bottom: 10px;
+      &:first-child {
+        text-align: left;
+      }
+      &:nth-child(3) {
+        padding-left: 40px;
+      }
+    }
+  }
+`;
+
 const Item = styled.tr`
-  display: flex;
-  justify-content: space-between;
-  padding: 1px 0px;
   color: #adb3bc;
+
+  & td {
+    text-align: right;
+    padding: 2px 0px;
+
+    &:first-child {
+      text-align: left;
+    }
+  }
 
   &.sell :first-child {
     color: #dc4156;
@@ -112,19 +125,25 @@ const OrderList = () => {
         </div>
       </HeaderLogo>
 
-      {/* List */}
-      <tr className="header-list">
-        <th>Price(USDT)</th>
-        <th>Amount(BTC)</th>
-        <th>Total</th>
-      </tr>
-      {sellDataRandom().map(({ price, amount, total }, index) => (
-        <Item key={index} className="sell">
-          <td>{price}</td>
-          <td>{amount}</td>
-          <td>{total}</td>
-        </Item>
-      ))}
+      <TableContainer>
+        {/* List */}
+        <thead>
+          <tr className="header-list">
+            <th>Price(USDT)</th>
+            <th>Amount(BTC)</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {sellDataRandom().map(({ price, amount, total }, index) => (
+            <Item key={index} className="sell">
+              <td>{price}</td>
+              <td>{amount}</td>
+              <td>{total}</td>
+            </Item>
+          ))}
+        </tbody>
+      </TableContainer>
 
       {/* Price */}
       <PriceContainer>
@@ -135,13 +154,17 @@ const OrderList = () => {
         <p>More</p>
       </PriceContainer>
 
-      {buyDataRandom().map(({ price, amount, total }, index) => (
-        <Item key={index} className="buy">
-          <td>{price}</td>
-          <td>{amount}</td>
-          <td>{total}</td>
-        </Item>
-      ))}
+      <table style={{ width: "100%" }}>
+        <tbody>
+          {buyDataRandom().map(({ price, amount, total }, index) => (
+            <Item key={index} className="buy">
+              <td>{price}</td>
+              <td>{amount}</td>
+              <td>{total}</td>
+            </Item>
+          ))}
+        </tbody>
+      </table>
     </OrderListContainer>
   );
 };

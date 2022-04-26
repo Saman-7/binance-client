@@ -1,9 +1,7 @@
 import { ApexOptions } from "apexcharts";
 
 export const apexOptions: ApexOptions = {
-  title: {
-    text: "BTC/USDT",
-  },
+  title: {},
   xaxis: {
     type: "datetime",
   },
