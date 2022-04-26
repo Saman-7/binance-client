@@ -47,6 +47,7 @@
     ]
   },
   "devDependencies": {
-    "@types/styled-components": "^5.1.25"
+    "@types/styled-components": "^5.1.25",
+    "@welldone-software/why-did-you-render": "^7.0.1"
   }
 }

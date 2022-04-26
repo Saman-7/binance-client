@@ -4,6 +4,12 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+if (process.env.NODE_ENV === "development") {
+  const whyDidYouRender = require("@welldone-software/why-did-you-render");
+  whyDidYouRender(React, {
+    trackAllPureComponents: true,
+  });
+}
 
 //Apollo Client
 const client = new ApolloClient({
