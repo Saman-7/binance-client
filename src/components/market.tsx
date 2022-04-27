@@ -2,9 +2,10 @@ import styled from "styled-components";
 import { ReactComponent as SearchLogo } from "../svg/search.svg";
 import { ReactComponent as StarLogo } from "../svg/star.svg";
 import { ReactComponent as LessThatSign } from "../svg/lessThatSign.svg";
-import { randomNumber } from "../utils/randomNumber";
+import { randomNumber } from "../utils/RandomNumber";
 import { ReactComponent as DoubleArrowTop } from "../svg/doubleArrowTop.svg";
 import { ReactComponent as ArrowUp } from "../svg/arrowUp.svg";
+import { randomString } from "../utils/RandomColor";
 
 const MarketContainer = styled.div`
   grid-area: market;
@@ -90,6 +91,13 @@ const Item = styled.tr`
     text-align: left;
     display: flex;
   }
+
+  & td.green {
+    color: #0ecb81;
+  }
+  & td.red {
+    color: #f6465d;
+  }
 `;
 
 const TradesContainer = styled.div`
@@ -144,15 +152,17 @@ const CurrencyRandomItem = () => {
   const pair = "BNB";
   const price = Math.random().toFixed(5);
   const change = `-${randomNumber(100, 999)}%`;
-  return { pair, price, change };
+  const color = randomString();
+  return { pair, price, change, color };
 };
 
 const MarketTradesRandomItem = () => {
-  const price = randomNumber(39000, 40000);
+  const price = randomNumber(3900000, 4000000);
   const amount = Math.random().toFixed(5);
   const DATE = new Date();
   const time = `${DATE.getHours()}:${DATE.getMinutes()}:${DATE.getSeconds()}`;
-  return { price, amount, time };
+  const color = randomString();
+  return { price, amount, time, color };
 };
 
 const currencyDataRandom = () => {
@@ -194,14 +204,14 @@ const Market = () => {
           </ValueHeader>
         </thead>
         <tbody>
-          {currencyDataRandom().map(({ pair, price, change }, index) => (
+          {currencyDataRandom().map(({ pair, price, change, color }, index) => (
             <Item key={index}>
               <td>
                 <StarLogo style={{ width: "15px" }} />
                 <span>{pair}</span>/USDT
               </td>
-              <td>{price}</td>
-              <td>{change}</td>
+              <td className={color}>{price}</td>
+              <td className={color}>{change}</td>
             </Item>
           ))}
         </tbody>
@@ -222,16 +232,15 @@ const Market = () => {
           </ValueHeader>
         </thead>
         <tbody>
-          {marketTradedDataRandom().map(({ price, amount, time }, index) => (
-            <Item key={index}>
-              <td>
-                <StarLogo style={{ width: "15px" }} />
-                <span>{price}</span>
-              </td>
-              <td>{amount}</td>
-              <td>{time}</td>
-            </Item>
-          ))}
+          {marketTradedDataRandom().map(
+            ({ price, amount, time, color }, index) => (
+              <Item key={index}>
+                <td className={color}>{price}</td>
+                <td>{amount}</td>
+                <td>{time}</td>
+              </Item>
+            )
+          )}
         </tbody>
       </TableContainer>
 
