@@ -1,52 +1,8 @@
-import styled from "styled-components";
 import { ReactComponent as BinanceLogo } from "../svg/logo.svg";
 import { ReactComponent as Menu } from "../svg/menu.svg";
 import { ReactComponent as Question } from "../svg/question.svg";
 import { ReactComponent as Setting } from "../svg/setting.svg";
-
-const HeaderContainer = styled.header`
-  grid-area: header;
-  height: 64px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #161a1e;
-  color: white;
-  border-bottom: 1px #252930 solid;
-`;
-
-const BoxHeader = styled.div`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-
-  &.box-nav {
-    & span {
-      margin: 0px 8px;
-      & span {
-        font-size: 12px;
-        padding: 1px;
-        background-color: #fcd535;
-        color: black;
-        border-radius: 4px;
-        margin-left: 5px;
-      }
-    }
-  }
-
-  &.box-set {
-    & span {
-      margin: 0px 10px;
-    }
-  }
-
-  & .register {
-    background-color: #fcd535;
-    color: black;
-    padding: 6px 12px;
-    border-radius: 4px;
-  }
-`;
+import { HeaderContainer, BoxHeader } from "../style/HeaderStyled";
 
 const Header = () => {
   return (
