@@ -21,20 +21,23 @@ const BoxHeader = styled.div`
   align-items: center;
 
   &.box-nav {
-    width: 50%;
-
-    & div span {
-      font-size: 12px;
-      padding: 1px;
-      background-color: #fcd535;
-      color: black;
-      border-radius: 4px;
-      margin-left: 5px;
+    & span {
+      margin: 0px 8px;
+      & span {
+        font-size: 12px;
+        padding: 1px;
+        background-color: #fcd535;
+        color: black;
+        border-radius: 4px;
+        margin-left: 5px;
+      }
     }
   }
 
   &.box-set {
-    width: 30%;
+    & span {
+      margin: 0px 10px;
+    }
   }
 
   & .register {
@@ -49,30 +52,31 @@ const Header = () => {
   return (
     <HeaderContainer>
       <BoxHeader className="box-nav">
-        <BinanceLogo style={{ maxWidth: "120px" }} />
-        <Menu style={{ maxWidth: "20px" }} />
-        <div>
+        <BinanceLogo style={{ width: "120px", margin: "0px 15px" }} />
+        <Menu style={{ width: "20px", margin: "0px 10px" }} />
+        <span>
           Buy Crypto<span>EUR</span>
-        </div>
-        <div>Markets</div>
-        <div>Trade</div>
-        <div>Derivatives</div>
-        <div>Earn</div>
-        <div>Finance</div>
-        <div>
+        </span>
+        <span>Markets</span>
+        <span>Trade</span>
+        <span>Derivatives</span>
+        <span>Earn</span>
+        <span>Finance</span>
+        <span>
           NFT<span>New</span>
-        </div>
+        </span>
       </BoxHeader>
-      <div style={{ width: "20%" }} />
+      {/* <div style={{ width: "20%" }} /> */}
+
       <BoxHeader className="box-set">
-        <div>Log in</div>
-        <div className="register">Register</div>
-        <div>Downloads</div>
-        <div>English</div>
+        <span>Log in</span>
+        <span className="register">Register</span>
+        <span>Downloads</span>
+        <span>English</span>
         <span>|</span>
-        <div>USD</div>
-        <Question style={{ maxWidth: "25px" }} />
-        <Setting style={{ maxWidth: "25px" }} />
+        <span>USD</span>
+        <Question style={{ width: "25px", margin: "0px 3px" }} />
+        <Setting style={{ width: "25px", margin: "0px 3px" }} />
       </BoxHeader>
     </HeaderContainer>
   );
