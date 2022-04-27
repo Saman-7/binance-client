@@ -52,11 +52,11 @@ const RightFooter = styled.div`
     border-left: 1px #474d57 solid;
     display: flex;
     align-items: center;
-    padding: 0px 12px;
+    padding: 0px 10px;
   }
 
   & div span {
-    margin-left: 10px;
+    margin-left: 7px;
   }
 `;
 
@@ -106,15 +106,15 @@ const Footer = () => {
 
       <RightFooter>
         <div>
-          <CookieLogo style={{ width: "15px" }} />
+          <CookieLogo style={{ width: "20px" }} />
           <span>Cookie Preferences</span>
         </div>
         <div>
-          <DownloadLogo style={{ width: "15px" }} />
+          <DownloadLogo style={{ width: "20px" }} />
           <span>Download</span>
         </div>
         <div>
-          <SupportLogo style={{ width: "15px" }} />
+          <SupportLogo style={{ width: "20px" }} />
           <span>Online Support</span>
         </div>
       </RightFooter>
