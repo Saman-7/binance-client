@@ -2,9 +2,10 @@ import { useEffect, useState, VFC } from "react";
 import { useGetCandles } from "../api/useGetCandles";
 import ApexCharts from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
-import { apexOptions } from "../utils/apexOptions";
+import { apexOptions } from "../utils/ApexOptions";
 
-import OrderType from "./orderType";
+import OrderType from "./OrderType";
+import Loading from "./Loading";
 
 const Chart: VFC = () => {
   //
@@ -25,7 +26,7 @@ const Chart: VFC = () => {
     }
   }, [data]);
 
-  if (loading) return <h1>Loading ...</h1>;
+  if (loading) return <Loading />;
   if (error) return <h1>Error :/</h1>;
   return (
     <div style={{ gridArea: "chart" }}>
