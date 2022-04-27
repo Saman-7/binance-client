@@ -25,4 +25,20 @@
     "price chart market"
     "detail detail detail"
     "footer footer footer";
+  background-color: #161a1e;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: yellow;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #161a1e;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #828c9a;
+  border-radius: 10px;
+  border: 2px #161a1e solid;
 }
