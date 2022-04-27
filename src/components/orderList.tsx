@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { randomNumber } from "../utils/randomNumber";
+import { randomNumber } from "../utils/RandomNumber";
 import { ReactComponent as SellBuyLogo } from "../svg/sell-buyFormat.svg";
 import { ReactComponent as BuyLogo } from "../svg/sellFormat.svg";
 import { ReactComponent as SellLogo } from "../svg/buyFormat.svg";
@@ -62,7 +62,7 @@ const Item = styled.tr`
 
   & td {
     text-align: right;
-    padding: 2px 0px;
+    padding: 2px 5px;
 
     &:first-child {
       text-align: left;
@@ -98,7 +98,7 @@ const PriceContainer = styled.div`
 const randomItem = () => {
   const price = randomNumber(41000, 42000);
   const amount = Math.random().toFixed(5);
-  const total = randomNumber(100000, 500000);
+  const total = randomNumber(1000000000, 5000000000);
   return { price, amount, total };
 };
 
