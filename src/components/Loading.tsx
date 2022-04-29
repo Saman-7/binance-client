@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const LoadinContainer = styled.div`
+const LoadingContainer = styled.div`
   position: absolute;
   display: flex;
   justify-content: center;
@@ -8,24 +8,50 @@ const LoadinContainer = styled.div`
   width: 100%;
   height: 100vh;
   z-index: 1000;
+`;
 
-  & span {
-    width: 5px;
-    height: 30px;
-    background-color: yellow;
-    margin: 5px;
+const Column = styled.span`
+  width: 5px;
+  height: 20px;
+  background-color: #f0b90b;
+  margin: 5px;
+  animation: changeY 2s ease-in-out infinite;
+
+  @keyframes changeY {
+    15% {
+      transform: scaleY(3);
+    }
+    30% {
+      transform: scaleY(1);
+    }
+  }
+
+  &:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+  &:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  &:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+  &:nth-child(4) {
+    animation-delay: 0.4s;
+  }
+  &:nth-child(5) {
+    animation-delay: 0.5s;
   }
 `;
 
 const Loading = () => {
   return (
-    <LoadinContainer>
-      <span />
-      <span />
-      <span />
-      <span />
-      <span />
-    </LoadinContainer>
+    <LoadingContainer>
+      <Column />
+      <Column />
+      <Column />
+      <Column />
+      <Column />
+    </LoadingContainer>
   );
 };
 
