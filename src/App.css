@@ -29,8 +29,7 @@
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
-  background-color: yellow;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
@@ -38,7 +37,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #828c9a;
+  background-color: #5e6673;
   border-radius: 10px;
   border: 2px #161a1e solid;
 }
