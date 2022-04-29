@@ -4,7 +4,7 @@ import { ReactComponent as LessThatSign } from "../svg/lessThatSign.svg";
 import { randomNumber } from "../utils/RandomNumber";
 import { ReactComponent as DoubleArrowTop } from "../svg/doubleArrowTop.svg";
 import { ReactComponent as ArrowUp } from "../svg/arrowUp.svg";
-import { randomString } from "../utils/RandomColor";
+import { randomColor } from "../utils/RandomColor";
 import {
   MarketContainer,
   InputHeader,
@@ -21,7 +21,7 @@ const CurrencyRandomItem = () => {
   const pair = "BNB";
   const price = Math.random().toFixed(5);
   const change = `-${randomNumber(100, 999)}%`;
-  const color = randomString();
+  const color = randomColor();
   return { pair, price, change, color };
 };
 
@@ -30,7 +30,7 @@ const MarketTradesRandomItem = () => {
   const amount = Math.random().toFixed(5);
   const DATE = new Date();
   const time = `${DATE.getHours()}:${DATE.getMinutes()}:${DATE.getSeconds()}`;
-  const color = randomString();
+  const color = randomColor();
   return { price, amount, time, color };
 };
 

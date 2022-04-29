@@ -11,10 +11,12 @@ import {
   Item,
   PriceContainer,
 } from "../style/OrderListStyled";
+import { useEffect, useState } from "react";
+import { randomColor } from "../utils/RandomColor";
 
 const randomItem = () => {
   const price = randomNumber(41000, 42000);
-  const amount = Math.random().toFixed(5);
+  const amount = Number(Math.random().toFixed(5));
   const total = randomNumber(1000000000, 5000000000);
   return { price, amount, total };
 };
@@ -27,6 +29,41 @@ const buyDataRandom = () => {
 };
 
 const OrderList = () => {
+  const [sellData, setSellData] = useState(sellDataRandom());
+  const [buyData, setBuyData] = useState(buyDataRandom());
+  const [price, setPrice] = useState<{ value: number; color: string }>({
+    value: randomNumber(39000, 40000),
+    color: randomColor(),
+  });
+
+  //Sell
+  useEffect(() => {
+    const id = setInterval(() => {
+      const newArray = sellData.slice(1).concat(randomItem());
+      setSellData(newArray);
+    }, 2000);
+    return () => clearInterval(id);
+  }, [sellData]);
+
+  //Buy
+  useEffect(() => {
+    const id = setInterval(() => {
+      const newArray = buyData.slice(1).concat(randomItem());
+      setBuyData(newArray);
+    }, 2000);
+    return () => clearInterval(id);
+  }, [buyData]);
+
+  //Price
+  useEffect(() => {
+    const id = setInterval(() => {
+      const value = randomNumber(39000, 40000);
+      const color = value > price.value ? "#0ecb81" : "#f6465d";
+      setPrice({ value, color });
+    }, 1000);
+    return () => clearInterval(id);
+  }, [price]);
+
   return (
     <OrderListContainer>
       {/* Header Logo */}
@@ -52,7 +89,7 @@ const OrderList = () => {
           </tr>
         </thead>
         <tbody>
-          {sellDataRandom().map(({ price, amount, total }, index) => (
+          {sellData.map(({ price, amount, total }, index) => (
             <Item key={index} className="sell">
               <td>{price}</td>
               <td>{amount}</td>
@@ -65,15 +102,15 @@ const OrderList = () => {
       {/* Price */}
       <PriceContainer>
         <div>
-          <p>40,476.85</p>
-          <p>$40,456.34</p>
+          <p style={{ color: price.color }}>{price.value}.75</p>
+          <p>${price.value}.75</p>
         </div>
         <p>More</p>
       </PriceContainer>
 
       <table style={{ width: "100%" }}>
         <tbody>
-          {buyDataRandom().map(({ price, amount, total }, index) => (
+          {buyData.map(({ price, amount, total }, index) => (
             <Item key={index} className="buy">
               <td>{price}</td>
               <td>{amount}</td>
