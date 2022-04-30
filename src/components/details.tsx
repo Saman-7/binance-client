@@ -1,6 +1,7 @@
+import { FC } from "react";
 import { HeaderDetails, BodyDetails } from "../style/DetailStyled";
 
-const Details = () => {
+const Details: FC = () => {
   return (
     <div style={{ gridArea: "detail", backgroundColor: "#161A1E" }}>
       <HeaderDetails>

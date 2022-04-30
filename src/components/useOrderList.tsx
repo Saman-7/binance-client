@@ -11,7 +11,7 @@ import {
   Item,
   PriceContainer,
 } from "../style/OrderListStyled";
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { randomColor } from "../utils/RandomColor";
 
 const randomItem = () => {
@@ -28,10 +28,10 @@ const buyDataRandom = () => {
   return Array.from({ length: 17 }, () => randomItem());
 };
 
-const OrderList = () => {
+const OrderList: FC = () => {
   const [sellData, setSellData] = useState(sellDataRandom());
   const [buyData, setBuyData] = useState(buyDataRandom());
-  const [price, setPrice] = useState<{ value: number; color: string }>({
+  const [price, setPrice] = useState({
     value: randomNumber(39000, 40000),
     color: randomColor(),
   });

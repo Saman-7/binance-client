@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { ReactComponent as Play } from "../svg/play.svg";
 import { ReactComponent as Notebook } from "../svg/notebook.svg";
 import {
@@ -5,7 +6,7 @@ import {
   SectionDaily,
 } from "../style/DailyHistoryStyled";
 
-const DailyHistory = () => {
+const DailyHistory: FC = () => {
   return (
     <DailyHostoryContainer>
       <SectionDaily className="left">

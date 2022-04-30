@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { ReactComponent as DotMenu } from "../svg/dotMenu.svg";
 import { ReactComponent as CircleInfo } from "../svg/circleInfo.svg";
 import {
@@ -11,7 +12,7 @@ import {
   ButtonLogin,
 } from "../style/OrderTypeStyled";
 
-const OrderType = () => {
+const OrderType: FC = () => {
   return (
     <OrderTypeForm>
       <ItemHeader>

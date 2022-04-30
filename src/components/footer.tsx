@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { ReactComponent as SignalLogo } from "../svg/signal.svg";
 import { ReactComponent as RangeSetting } from "../svg/rangeSetting.svg";
 import { ReactComponent as CookieLogo } from "../svg/cookie.svg";
@@ -9,7 +10,7 @@ import {
   RightFooter,
 } from "../style/FooterStyled";
 
-const Footer = () => {
+const Footer: FC = () => {
   return (
     <FooterContainer>
       <LeftFooter>

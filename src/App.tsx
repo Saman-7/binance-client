@@ -1,5 +1,5 @@
 import "./App.css";
-import { lazy, Suspense, VFC } from "react";
+import { FC, lazy, Suspense } from "react";
 import Loading from "./components/Loading";
 const Header = lazy(() => import("./components/Header"));
 const DailyHistory = lazy(() => import("./components/DailyHistory"));
@@ -9,7 +9,7 @@ const Market = lazy(() => import("./components/Market"));
 const Details = lazy(() => import("./components/Details"));
 const Footer = lazy(() => import("./components/Footer"));
 
-const App: VFC = () => {
+const App: FC = () => {
   //
   return (
     <div className="app">

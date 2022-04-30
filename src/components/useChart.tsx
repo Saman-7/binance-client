@@ -1,4 +1,4 @@
-import { useEffect, useState, VFC } from "react";
+import { useEffect, useState, FC } from "react";
 import { useGetCandles } from "../api/useGetCandles";
 import ApexCharts from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
@@ -7,7 +7,7 @@ import { apexOptions } from "../utils/ApexOptions";
 import OrderType from "./OrderType";
 import Loading from "./Loading";
 
-const Chart: VFC = () => {
+const Chart: FC = () => {
   //
   const { loading, error, data } = useGetCandles();
   const [series, setSeries] = useState<ApexOptions["series"]>([]);

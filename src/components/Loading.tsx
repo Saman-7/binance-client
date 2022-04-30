@@ -1,3 +1,4 @@
+import { FC } from "react";
 import styled from "styled-components";
 
 const LoadingContainer = styled.div`
@@ -43,7 +44,7 @@ const Column = styled.span`
   }
 `;
 
-const Loading = () => {
+const Loading: FC = () => {
   return (
     <LoadingContainer>
       <Column />

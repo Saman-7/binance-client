@@ -23,7 +23,7 @@ export const SectionDaily = styled.div`
     align-items: center;
 
     & div {
-      margin: 0px 15px;
+      margin: 0px 13px;
       & .red {
         color: #f6465d;
       }
@@ -50,8 +50,12 @@ export const SectionDaily = styled.div`
     }
   }
 
-  &.right div {
-    display: flex;
-    color: #848e9c;
+  &.right {
+    margin-right: 10px;
+
+    & div {
+      display: flex;
+      color: #848e9c;
+    }
   }
 `;
