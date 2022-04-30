@@ -27,12 +27,20 @@ export const BoxHeader = styled.div`
         border-radius: 4px;
         margin-left: 5px;
       }
+      &:hover {
+        color: #f0aa17;
+        cursor: pointer;
+      }
     }
   }
 
   &.box-set {
     & span {
       margin: 0px 10px;
+      &:hover:not(.register) {
+        color: #f0aa17;
+        cursor: pointer;
+      }
     }
   }
 
@@ -41,5 +49,9 @@ export const BoxHeader = styled.div`
     color: black;
     padding: 6px 12px;
     border-radius: 4px;
+    &:hover {
+      background-color: #f0aa17;
+      cursor: pointer;
+    }
   }
 `;
