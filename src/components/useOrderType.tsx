@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { ReactComponent as DotMenu } from "../svg/dotMenu.svg";
 import { ReactComponent as CircleInfo } from "../svg/circleInfo.svg";
 import {
@@ -7,12 +7,22 @@ import {
   ValueHeader,
   NameHeader,
   InputForm,
-  ItemForm,
   RadioForm,
   ButtonLogin,
 } from "../style/OrderTypeStyled";
+import Limit from "./orderTypes/Limit";
+import Market from "./orderTypes/Market";
+import StopLimit from "./orderTypes/StopLimit";
+import { css } from "styled-components";
+import classNames from "classnames";
 
 const OrderType: FC = () => {
+  const [typeList, setTypeList] = useState("limit");
+
+  const changeHeader = (type: string) => {
+    setTypeList(type);
+  };
+
   return (
     <OrderTypeForm>
       <ItemHeader>
@@ -27,9 +37,24 @@ const OrderType: FC = () => {
       </ItemHeader>
 
       <ValueHeader>
-        <span>Limit</span>
-        <span>Market</span>
-        <span>Stop-Limit</span>
+        <span
+          className={classNames({ active: typeList === "limit" })}
+          onClick={() => changeHeader("limit")}
+        >
+          Limit
+        </span>
+        <span
+          className={classNames({ active: typeList === "market" })}
+          onClick={() => changeHeader("market")}
+        >
+          Market
+        </span>
+        <span
+          className={classNames({ active: typeList === "stop-limit" })}
+          onClick={() => changeHeader("stop-limit")}
+        >
+          Stop-Limit
+        </span>
         <CircleInfo style={{ width: "20px" }} />
       </ValueHeader>
 
@@ -43,29 +68,9 @@ const OrderType: FC = () => {
           <span>-BTC</span>
         </NameHeader>
 
-        <ItemForm>
-          <span>Price</span>
-          <input type="number" defaultValue="39615.09" />
-          <span>USDT</span>
-        </ItemForm>
-
-        <ItemForm>
-          <span>Price</span>
-          <input type="number" defaultValue="39615.09" />
-          <span>USDT</span>
-        </ItemForm>
-
-        <ItemForm>
-          <span>Amount</span>
-          <input type="number" />
-          <span>BTC</span>
-        </ItemForm>
-
-        <ItemForm>
-          <span>Amount</span>
-          <input type="number" />
-          <span>BTC</span>
-        </ItemForm>
+        {typeList === "limit" ? <Limit /> : null}
+        {typeList === "market" ? <Market /> : null}
+        {typeList === "stop-limit" ? <StopLimit /> : null}
 
         <RadioForm>
           <div className="line">
@@ -110,7 +115,7 @@ const OrderType: FC = () => {
               <div />
             </label>
             <label>
-              <input type="radio" name="btc" readOnly />
+              <input type="radio" name="btc" />
               <div />
             </label>
           </div>

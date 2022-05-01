@@ -4,7 +4,7 @@ import ApexCharts from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
 import { apexOptions } from "../utils/ApexOptions";
 
-import OrderType from "./OrderType";
+import OrderType from "./useOrderType";
 import Loading from "./Loading";
 
 const Chart: FC = () => {

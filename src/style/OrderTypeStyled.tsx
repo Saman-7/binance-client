@@ -58,7 +58,7 @@ export const ValueHeader = styled.div`
 
   & span {
     margin-right: 16px;
-    &:first-child {
+    &.active {
       color: #f0aa17;
     }
     &:hover {
@@ -93,7 +93,6 @@ export const InputForm = styled.div`
 `;
 
 export const ItemForm = styled.div`
-  background-color: yellow; //1E2026
   height: 40px;
   display: flex;
   justify-content: space-between;
@@ -101,9 +100,10 @@ export const ItemForm = styled.div`
   color: #eaece3;
   background-color: #2a2d35;
   border-radius: 4px;
+  font-size: 15px;
 
   &:focus-within,
-  &:hover {
+  &:hover:not(.disabled) {
     border: 1px yellow solid;
   }
 
@@ -126,10 +126,16 @@ export const ItemForm = styled.div`
 
   & span {
     padding: 10px;
-
-    &:first-child {
+    user-select: none;
+    &:first-child:not(.market) {
       color: #7e8696;
-      font-size: 14px;
+    }
+  }
+
+  &.disabled {
+    background: #474d57;
+    & input {
+      background-color: #474d57;
     }
   }
 `;
