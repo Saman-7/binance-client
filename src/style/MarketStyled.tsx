@@ -32,9 +32,13 @@ export const CurrencyHeader = styled.div`
   margin-bottom: 7px;
 
   & p {
-    font-size: 12px;
+    font-size: 12.5px;
     &.active {
       color: #f0b911;
+    }
+    &:hover {
+      color: #f0aa17;
+      cursor: pointer;
     }
   }
 `;
@@ -69,7 +73,7 @@ export const ValueHeader = styled.tr`
 export const Item = styled.tr`
   padding: 1px 0px;
   color: #adb3bc;
-  font-size: 13px;
+  font-size: 12px;
 
   & td {
     text-align: right;
@@ -91,20 +95,30 @@ export const Item = styled.tr`
   & td.red {
     color: #f6465d;
   }
+
+  &:hover {
+    background-color: #2b3139;
+    cursor: pointer;
+  }
 `;
 
-export const TradesContainer = styled.div`
+export const HeaderTrades = styled.div`
   display: flex;
   padding-left: 10px;
   & span {
     font-size: 14px;
     padding: 10px 1px;
-    margin-right: 25px;
-    color: #848e9c;
+    margin: 5px 25px 7px 0px;
+    color: #b7bdc6;
 
     &.active {
       font-weight: 600;
       color: #f0b901;
+    }
+
+    &:hover {
+      color: #f0aa17;
+      cursor: pointer;
     }
   }
 `;

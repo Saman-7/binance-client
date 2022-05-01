@@ -12,22 +12,23 @@ import {
   TableContainer,
   ValueHeader,
   Item,
-  TradesContainer,
+  HeaderTrades,
   MarketActivities,
   ItemActivities,
 } from "../style/MarketStyled";
+import { useEffect, useState } from "react";
 
-const CurrencyRandomItem = () => {
+const currencyRandomItem = () => {
   const pair = "BNB";
-  const price = Math.random().toFixed(5);
+  const price = Number(Math.random().toFixed(5));
   const change = `-${randomNumber(100, 999)}%`;
   const color = randomColor();
   return { pair, price, change, color };
 };
 
-const MarketTradesRandomItem = () => {
+const marketTradesRandomItem = () => {
   const price = randomNumber(3900000, 4000000);
-  const amount = Math.random().toFixed(5);
+  const amount = Number(Math.random().toFixed(5));
   const DATE = new Date();
   const time = `${DATE.getHours()}:${DATE.getMinutes()}:${DATE.getSeconds()}`;
   const color = randomColor();
@@ -35,14 +36,25 @@ const MarketTradesRandomItem = () => {
 };
 
 const currencyDataRandom = () => {
-  return Array.from({ length: 30 }, () => CurrencyRandomItem());
+  return Array.from({ length: 30 }, () => currencyRandomItem());
 };
 
 const marketTradedDataRandom = () => {
-  return Array.from({ length: 30 }, () => MarketTradesRandomItem());
+  return Array.from({ length: 30 }, () => marketTradesRandomItem());
 };
 
 const Market = () => {
+  const [currencies] = useState(currencyDataRandom());
+  const [trades, setTrades] = useState(marketTradedDataRandom());
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      const newArray = trades.slice(1).concat(marketTradesRandomItem());
+      setTrades(newArray);
+    }, 500);
+    return () => clearInterval(id);
+  }, [trades]);
+
   return (
     <MarketContainer>
       {/* Input */}
@@ -73,7 +85,7 @@ const Market = () => {
           </ValueHeader>
         </thead>
         <tbody>
-          {currencyDataRandom().map(({ pair, price, change, color }, index) => (
+          {currencies.map(({ pair, price, change, color }, index) => (
             <Item key={index}>
               <td>
                 <StarLogo style={{ width: "15px" }} />
@@ -86,10 +98,10 @@ const Market = () => {
         </tbody>
       </TableContainer>
 
-      <TradesContainer>
+      <HeaderTrades>
         <span className="active">Market Trades</span>
         <span>My Trades</span>
-      </TradesContainer>
+      </HeaderTrades>
 
       {/* Table Market Trades */}
       <TableContainer>
@@ -101,15 +113,15 @@ const Market = () => {
           </ValueHeader>
         </thead>
         <tbody>
-          {marketTradedDataRandom().map(
-            ({ price, amount, time, color }, index) => (
+          {[...trades]
+            .reverse()
+            .map(({ price, amount, time, color }, index) => (
               <Item key={index}>
                 <td className={color}>{price}</td>
                 <td>{amount}</td>
                 <td>{time}</td>
               </Item>
-            )
-          )}
+            ))}
         </tbody>
       </TableContainer>
 
@@ -133,7 +145,7 @@ const Market = () => {
                 <span>16:28:06</span>
               </td>
               <td>
-                <span>-6.88%</span>
+                <span>+6.88%</span>
                 <span>New 24h Low</span>
               </td>
               <td>
@@ -149,11 +161,11 @@ const Market = () => {
             </ItemActivities>
             <ItemActivities>
               <td>
-                <span>ORN/USDT</span>
-                <span>16:28:06</span>
+                <span>ALCX/USDT</span>
+                <span>13:07:09</span>
               </td>
               <td>
-                <span>-6.88%</span>
+                <span>+5.07%</span>
                 <span>New 24h Low</span>
               </td>
               <td>
