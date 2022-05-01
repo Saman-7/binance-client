@@ -59,7 +59,11 @@ export const ValueHeader = styled.div`
   & span {
     margin-right: 16px;
     &:first-child {
-      color: #f0b90b;
+      color: #f0aa17;
+    }
+    &:hover {
+      color: #f0aa17;
+      cursor: pointer;
     }
   }
 `;

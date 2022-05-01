@@ -27,10 +27,10 @@ export const BoxHeader = styled.div`
         border-radius: 4px;
         margin-left: 5px;
       }
-      &:hover {
-        color: #f0aa17;
-        cursor: pointer;
-      }
+    }
+    & > span:hover {
+      color: #f0aa17;
+      cursor: pointer;
     }
   }
 

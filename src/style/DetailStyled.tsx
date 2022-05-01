@@ -10,10 +10,13 @@ export const HeaderDetails = styled.div`
     font-weight: 500;
     font-size: 14px;
     padding: 15px 0px;
-
     &.active {
       color: #f0b90b;
       font-weight: 600;
+    }
+    &:hover {
+      color: #f0aa17;
+      cursor: pointer;
     }
   }
 `;
