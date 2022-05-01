@@ -1,12 +1,28 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { ReactComponent as Play } from "../svg/play.svg";
 import { ReactComponent as Notebook } from "../svg/notebook.svg";
 import {
   DailyHostoryContainer,
   SectionDaily,
 } from "../style/DailyHistoryStyled";
+import { randomNumber } from "../utils/RandomNumber";
+import { randomColor } from "../utils/RandomColor";
 
 const DailyHistory: FC = () => {
+  const [price, setPrice] = useState({
+    value: randomNumber(39000, 40000),
+    color: randomColor(),
+  });
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      const value = randomNumber(39000, 40000);
+      const color = value > price.value ? "#0ecb81" : "#f6465d";
+      setPrice({ value, color });
+    }, 500);
+    return () => clearInterval(id);
+  }, [price]);
+
   return (
     <DailyHostoryContainer>
       <SectionDaily className="left">
@@ -18,8 +34,10 @@ const DailyHistory: FC = () => {
           </div>
         </div>
         <div>
-          <p className="price">41,440.96</p>
-          <p>$41,440.96</p>
+          <p className="price" style={{ color: price.color }}>
+            {price.value}.00
+          </p>
+          <p>${price.value}.00</p>
         </div>
         <div>
           <p className="head">24h Change</p>
