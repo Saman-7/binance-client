@@ -21,8 +21,9 @@
   grid-template-rows: 64px 70px;
   grid-template-areas:
     "header header header"
-    "daily daily market"
-    "price chart market"
+    "daily daily trade"
+    "orderList chart trade"
+    "orderList orderForm trade"
     "detail detail detail"
     "footer footer footer";
   background-color: #161a1e;

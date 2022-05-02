@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const OrderListContainer = styled.div`
+  grid-area: orderList;
   background-color: #161a1e;
   padding: 0px 20px;
   font-size: 12px;

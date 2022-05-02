@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const OrderTypeForm = styled.form`
+  grid-area: orderForm;
   background-color: #1e2026;
 `;
 

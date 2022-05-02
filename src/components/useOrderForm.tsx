@@ -9,14 +9,13 @@ import {
   InputForm,
   RadioForm,
   ButtonLogin,
-} from "../style/OrderTypeStyled";
-import Limit from "./orderTypes/Limit";
-import Market from "./orderTypes/Market";
-import StopLimit from "./orderTypes/StopLimit";
-import { css } from "styled-components";
+} from "../style/OrderFormStyled";
+import Limit from "./orderForms/Limit";
+import Market from "./orderForms/Market";
+import StopLimit from "./orderForms/StopLimit";
 import classNames from "classnames";
 
-const OrderType: FC = () => {
+const OrderForm: FC = () => {
   const [typeList, setTypeList] = useState("limit");
 
   const changeHeader = (type: string) => {
@@ -136,4 +135,4 @@ const OrderType: FC = () => {
   );
 };
 
-export default OrderType;
+export default OrderForm;

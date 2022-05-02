@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const MarketContainer = styled.div`
-  grid-area: market;
+  grid-area: trade;
   padding-top: 10px;
   background-color: #161a1e;
   border-left: 1px #252930 solid;

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { ItemForm } from "../../style/OrderTypeStyled";
+import { ItemForm } from "../../style/OrderFormStyled";
 
 const StopLimit: FC = () => {
   return (

@@ -3,8 +3,6 @@ import { useGetCandles } from "../api/useGetCandles";
 import ApexCharts from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
 import { apexOptions } from "../utils/ApexOptions";
-
-import OrderType from "./useOrderType";
 import Loading from "./Loading";
 
 const Chart: FC = () => {
@@ -31,7 +29,6 @@ const Chart: FC = () => {
   return (
     <div style={{ gridArea: "chart" }}>
       <ApexCharts series={series} options={apexOptions} type="candlestick" />
-      <OrderType />
     </div>
   );
 };
