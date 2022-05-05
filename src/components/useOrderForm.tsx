@@ -9,18 +9,82 @@ import {
   InputForm,
   RadioForm,
   ButtonLogin,
+  InputFormContainer,
+  ButtonBuySell,
 } from "../style/OrderFormStyled";
 import Limit from "./orderForms/Limit";
 import Market from "./orderForms/Market";
 import StopLimit from "./orderForms/StopLimit";
 import classNames from "classnames";
+import useMediaQuery from "../utils/useMedia";
+
+interface PropsFormType {
+  orderType: string;
+  listType: string;
+}
+
+const FormType: FC<PropsFormType> = ({ orderType, listType }) => {
+  return (
+    <div>
+      <NameHeader>
+        <span>Avbl</span>
+        <span>{orderType === "buy" ? "-USDT" : "-BTC"}</span>
+      </NameHeader>
+
+      <InputForm>
+        {listType === "limit" ? <Limit type={orderType} /> : null}
+        {listType === "market" ? <Market type={orderType} /> : null}
+        {listType === "stop-limit" ? <StopLimit type={orderType} /> : null}
+      </InputForm>
+
+      <RadioForm>
+        <div className="line">
+          <label>
+            <input type="radio" name="btc" readOnly checked />
+            <div />
+          </label>
+          <label>
+            <input type="radio" name="btc" />
+            <div />
+          </label>
+          <label>
+            <input type="radio" name="btc" />
+            <div />
+          </label>
+          <label>
+            <input type="radio" name="btc" />
+            <div />
+          </label>
+          <label>
+            <input type="radio" name="btc" />
+            <div />
+          </label>
+        </div>
+      </RadioForm>
+
+      <ButtonLogin>
+        <span>Log In</span>
+        or
+        <span>Register Now</span>
+      </ButtonLogin>
+    </div>
+  );
+};
 
 const OrderForm: FC = () => {
-  const [typeList, setTypeList] = useState("limit");
+  const [orderType, setOrderType] = useState("buy");
+  const [listType, setlistType] = useState("limit");
+
+  const isMedia = useMediaQuery("(max-width:1024px)");
 
   const changeHeader = (type: string) => {
-    setTypeList(type);
+    setlistType(type);
   };
+
+  const changeOrder = (type: string) => {
+    setOrderType(type);
+  };
+  console.log(orderType);
 
   return (
     <OrderTypeForm>
@@ -35,21 +99,38 @@ const OrderForm: FC = () => {
         </div>
       </ItemHeader>
 
+      {isMedia ? (
+        <ButtonBuySell>
+          <div
+            className={classNames("buy", { active: orderType === "buy" })}
+            onClick={() => changeOrder("buy")}
+          >
+            BUY
+          </div>
+          <div
+            className={classNames("sell", { active: orderType === "sell" })}
+            onClick={() => changeOrder("sell")}
+          >
+            SELL
+          </div>
+        </ButtonBuySell>
+      ) : null}
+
       <ValueHeader>
         <span
-          className={classNames({ active: typeList === "limit" })}
+          className={classNames({ active: listType === "limit" })}
           onClick={() => changeHeader("limit")}
         >
           Limit
         </span>
         <span
-          className={classNames({ active: typeList === "market" })}
+          className={classNames({ active: listType === "market" })}
           onClick={() => changeHeader("market")}
         >
           Market
         </span>
         <span
-          className={classNames({ active: typeList === "stop-limit" })}
+          className={classNames({ active: listType === "stop-limit" })}
           onClick={() => changeHeader("stop-limit")}
         >
           Stop-Limit
@@ -57,80 +138,16 @@ const OrderForm: FC = () => {
         <CircleInfo style={{ width: "20px" }} />
       </ValueHeader>
 
-      <InputForm>
-        <NameHeader>
-          <span>Avbl</span>
-          <span>-USDT</span>
-        </NameHeader>
-        <NameHeader>
-          <span>Avbl</span>
-          <span>-BTC</span>
-        </NameHeader>
-
-        {typeList === "limit" ? <Limit /> : null}
-        {typeList === "market" ? <Market /> : null}
-        {typeList === "stop-limit" ? <StopLimit /> : null}
-
-        <RadioForm>
-          <div className="line">
-            <label>
-              <input type="radio" name="usdt" readOnly checked />
-              <div />
-            </label>
-            <label>
-              <input type="radio" name="usdt" />
-              <div />
-            </label>
-            <label>
-              <input type="radio" name="usdt" />
-              <div />
-            </label>
-            <label>
-              <input type="radio" name="usdt" />
-              <div />
-            </label>
-            <label>
-              <input type="radio" name="usdt" />
-              <div />
-            </label>
-          </div>
-        </RadioForm>
-        <RadioForm>
-          <div className="line">
-            <label>
-              <input type="radio" name="btc" readOnly checked />
-              <div />
-            </label>
-            <label>
-              <input type="radio" name="btc" />
-              <div />
-            </label>
-            <label>
-              <input type="radio" name="btc" />
-              <div />
-            </label>
-            <label>
-              <input type="radio" name="btc" />
-              <div />
-            </label>
-            <label>
-              <input type="radio" name="btc" />
-              <div />
-            </label>
-          </div>
-        </RadioForm>
-
-        <ButtonLogin>
-          <span>Log In</span>
-          or
-          <span>Register Now</span>
-        </ButtonLogin>
-        <ButtonLogin>
-          <span>Log In</span>
-          or
-          <span>Register Now</span>
-        </ButtonLogin>
-      </InputForm>
+      <InputFormContainer>
+        {isMedia ? (
+          <FormType orderType={orderType} listType={listType} />
+        ) : (
+          <>
+            <FormType orderType="buy" listType={listType} />
+            <FormType orderType="sell" listType={listType} />
+          </>
+        )}
+      </InputFormContainer>
     </OrderTypeForm>
   );
 };

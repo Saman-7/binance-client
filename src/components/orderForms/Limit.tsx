@@ -1,32 +1,39 @@
 import { FC } from "react";
 import { ItemForm } from "../../style/OrderFormStyled";
 
-const Limit: FC = () => {
+const Limit: FC<{ type: string }> = ({ type }) => {
   return (
     <>
-      <ItemForm>
-        <span>Price</span>
-        <input type="number" defaultValue="39615.09" />
-        <span>USDT</span>
-      </ItemForm>
+      {type === "buy" ? (
+        <>
+          <ItemForm>
+            <span>Price</span>
+            <input type="number" defaultValue="39615.09" />
+            <span>USDT</span>
+          </ItemForm>
+          <ItemForm>
+            <span>Amount</span>
+            <input type="number" />
+            <span>BTC</span>
+          </ItemForm>
+        </>
+      ) : null}
 
-      <ItemForm>
-        <span>Price</span>
-        <input type="number" defaultValue="39615.09" />
-        <span>USDT</span>
-      </ItemForm>
+      {type === "sell" ? (
+        <>
+          <ItemForm>
+            <span>Price</span>
+            <input type="number" defaultValue="39615.09" />
+            <span>USDT</span>
+          </ItemForm>
 
-      <ItemForm>
-        <span>Amount</span>
-        <input type="number" />
-        <span>BTC</span>
-      </ItemForm>
-
-      <ItemForm>
-        <span>Amount</span>
-        <input type="number" />
-        <span>BTC</span>
-      </ItemForm>
+          <ItemForm>
+            <span>Amount</span>
+            <input type="number" />
+            <span>BTC</span>
+          </ItemForm>
+        </>
+      ) : null}
     </>
   );
 };

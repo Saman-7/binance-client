@@ -42,3 +42,16 @@
   border-radius: 10px;
   border: 2px #161a1e solid;
 }
+
+@media (max-width: 1024px) {
+  .app {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+      "header header header"
+      "daily daily daily"
+      "chart chart orderForm"
+      "trade orderList orderForm"
+      "detail detail orderForm"
+      "footer footer footer";
+  }
+}
