@@ -18,13 +18,6 @@ export const apexOptions: ApexOptions = {
       type: "xy",
     },
     background: "#161A1E",
-    events: {
-      dataPointMouseEnter: function (event, chartContext, config) {
-        console.log("event", event);
-        console.log("chartContext", chartContext);
-        console.log("config", config);
-      },
-    },
   },
   plotOptions: {
     candlestick: {
