@@ -9,6 +9,7 @@ export const HeaderContainer = styled.header`
   background-color: #161a1e;
   color: white;
   border-bottom: 1px #252930 solid;
+  font-size: 14px;
 `;
 
 export const BoxHeader = styled.div`
