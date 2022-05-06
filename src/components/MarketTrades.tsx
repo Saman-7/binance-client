@@ -17,6 +17,7 @@ import {
   ItemActivities,
 } from "../style/MarketStyled";
 import { useEffect, useState } from "react";
+import { useIsDesktop } from "../utils/useIsDesktop";
 
 const currencyRandomItem = () => {
   const pair = "BNB";
@@ -47,6 +48,8 @@ const Market = () => {
   const [currencies] = useState(currencyDataRandom());
   const [trades, setTrades] = useState(marketTradedDataRandom());
 
+  const isDesktop = useIsDesktop();
+
   useEffect(() => {
     const id = setInterval(() => {
       const newArray = trades.slice(1).concat(marketTradesRandomItem());
@@ -57,51 +60,55 @@ const Market = () => {
 
   return (
     <MarketContainer>
-      {/* Input */}
-      <InputHeader>
-        <SearchLogo style={{ width: "1.3em" }} />
-        <input placeholder="Search" />
-      </InputHeader>
+      {!isDesktop ? (
+        <>
+          {/* Input */}
+          <InputHeader>
+            <SearchLogo style={{ width: "1.3em" }} />
+            <input placeholder="Search" />
+          </InputHeader>
 
-      {/* Currency */}
-      <CurrencyHeader>
-        <StarLogo style={{ width: "15px" }} />
-        <p>BUSD</p>
-        <p className="active">USDT</p>
-        <p>BNB</p>
-        <p>BTC</p>
-        <p>ALTS</p>
-        <p>FIAT</p>
-        <LessThatSign style={{ maxWidth: "20px" }} />
-      </CurrencyHeader>
+          {/* Currency */}
+          <CurrencyHeader>
+            <StarLogo style={{ width: "15px" }} />
+            <p>BUSD</p>
+            <p className="active">USDT</p>
+            <p>BNB</p>
+            <p>BTC</p>
+            <p>ALTS</p>
+            <p>FIAT</p>
+            <LessThatSign style={{ maxWidth: "20px" }} />
+          </CurrencyHeader>
 
-      {/* Table Currency */}
-      <TableContainer>
-        <thead>
-          <ValueHeader>
-            <th>Pair</th>
-            <th>Price</th>
-            <th>Change</th>
-          </ValueHeader>
-        </thead>
-        <tbody>
-          {currencies.map(({ pair, price, change, color }, index) => (
-            <Item key={index}>
-              <td>
-                <StarLogo style={{ width: "15px" }} />
-                <span>{pair}</span>/USDT
-              </td>
-              <td className={color}>{price}</td>
-              <td className={color}>{change}</td>
-            </Item>
-          ))}
-        </tbody>
-      </TableContainer>
+          {/* Table Currency */}
+          <TableContainer>
+            <thead>
+              <ValueHeader>
+                <th>Pair</th>
+                <th>Price</th>
+                <th>Change</th>
+              </ValueHeader>
+            </thead>
+            <tbody>
+              {currencies.map(({ pair, price, change, color }, index) => (
+                <Item key={index}>
+                  <td>
+                    <StarLogo style={{ width: "15px" }} />
+                    <span>{pair}</span>/USDT
+                  </td>
+                  <td className={color}>{price}</td>
+                  <td className={color}>{change}</td>
+                </Item>
+              ))}
+            </tbody>
+          </TableContainer>
 
-      <HeaderTrades>
-        <span className="active">Market Trades</span>
-        <span>My Trades</span>
-      </HeaderTrades>
+          <HeaderTrades>
+            <span className="active">Market Trades</span>
+            <span>My Trades</span>
+          </HeaderTrades>
+        </>
+      ) : null}
 
       {/* Table Market Trades */}
       <TableContainer>
@@ -125,63 +132,65 @@ const Market = () => {
         </tbody>
       </TableContainer>
 
-      <MarketActivities>
-        <div>
-          <span>Market Activities</span>
-          <DoubleArrowTop
-            style={{
-              width: "25px",
-              transform: "rotate(180deg)",
-              color: "#5E6673",
-            }}
-          />
-        </div>
+      {!isDesktop ? (
+        <MarketActivities>
+          <div>
+            <span>Market Activities</span>
+            <DoubleArrowTop
+              style={{
+                width: "25px",
+                transform: "rotate(180deg)",
+                color: "#5E6673",
+              }}
+            />
+          </div>
 
-        <table style={{ width: "100%" }}>
-          <tbody>
-            <ItemActivities>
-              <td>
-                <span>ORN/USDT</span>
-                <span>16:28:06</span>
-              </td>
-              <td>
-                <span>+6.88%</span>
-                <span>New 24h Low</span>
-              </td>
-              <td>
-                <ArrowUp
-                  style={{
-                    width: "45px",
-                    backgroundColor: "#15342D",
-                    color: "#0ecb81",
-                    borderRadius: "4px",
-                  }}
-                />
-              </td>
-            </ItemActivities>
-            <ItemActivities>
-              <td>
-                <span>ALCX/USDT</span>
-                <span>13:07:09</span>
-              </td>
-              <td>
-                <span>+5.07%</span>
-                <span>New 24h Low</span>
-              </td>
-              <td>
-                <ArrowUp
-                  style={{
-                    width: "45px",
-                    backgroundColor: "#15342D",
-                    color: "#0ecb81",
-                    borderRadius: "4px",
-                  }}
-                />
-              </td>
-            </ItemActivities>
-          </tbody>
-        </table>
-      </MarketActivities>
+          <table style={{ width: "100%" }}>
+            <tbody>
+              <ItemActivities>
+                <td>
+                  <span>ORN/USDT</span>
+                  <span>16:28:06</span>
+                </td>
+                <td>
+                  <span>+6.88%</span>
+                  <span>New 24h Low</span>
+                </td>
+                <td>
+                  <ArrowUp
+                    style={{
+                      width: "45px",
+                      backgroundColor: "#15342D",
+                      color: "#0ecb81",
+                      borderRadius: "4px",
+                    }}
+                  />
+                </td>
+              </ItemActivities>
+              <ItemActivities>
+                <td>
+                  <span>ALCX/USDT</span>
+                  <span>13:07:09</span>
+                </td>
+                <td>
+                  <span>+5.07%</span>
+                  <span>New 24h Low</span>
+                </td>
+                <td>
+                  <ArrowUp
+                    style={{
+                      width: "45px",
+                      backgroundColor: "#15342D",
+                      color: "#0ecb81",
+                      borderRadius: "4px",
+                    }}
+                  />
+                </td>
+              </ItemActivities>
+            </tbody>
+          </table>
+        </MarketActivities>
+      ) : null}
     </MarketContainer>
   );
 };
