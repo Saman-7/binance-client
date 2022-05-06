@@ -9,8 +9,11 @@ import {
   LeftFooter,
   RightFooter,
 } from "../style/FooterStyled";
+import { useIsDesktop } from "../utils/useIsDesktop";
 
 const Footer: FC = () => {
+  const isDesktop = useIsDesktop();
+
   return (
     <FooterContainer>
       <LeftFooter>
@@ -37,21 +40,25 @@ const Footer: FC = () => {
           <span className="red">-1.26</span>
           <span>3.27048</span>
         </div>
-        <div>
-          <span>ETHBUSD</span>
-          <span className="green">+0.95</span>
-          <span>2976.93</span>
-        </div>
-        <div>
-          <span>SOLBUSD</span>
-          <span className="red">-0.14</span>
-          <span>100.26</span>
-        </div>
-        <div>
-          <span>SHIBBUSD</span>
-          <span className="green">+1.80</span>
-          <span>0.0000243</span>
-        </div>
+        {!isDesktop ? (
+          <>
+            <div>
+              <span>ETHBUSD</span>
+              <span className="green">+0.95</span>
+              <span>2976.93</span>
+            </div>
+            <div>
+              <span>SOLBUSD</span>
+              <span className="red">-0.14</span>
+              <span>100.26</span>
+            </div>
+            <div>
+              <span>SHIBBUSD</span>
+              <span className="green">+1.80</span>
+              <span>0.0000243</span>
+            </div>
+          </>
+        ) : null}
       </LeftFooter>
 
       <RightFooter>
