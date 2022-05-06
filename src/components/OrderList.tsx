@@ -13,6 +13,7 @@ import {
 } from "../style/OrderListStyled";
 import { FC, useEffect, useState } from "react";
 import { randomColor } from "../utils/RandomColor";
+import { useIsDesktop } from "../utils/useIsDesktop";
 
 const randomItem = () => {
   const price = randomNumber(41000, 42000);
@@ -35,6 +36,8 @@ const OrderList: FC = () => {
     value: randomNumber(39000, 40000),
     color: randomColor(),
   });
+
+  const isDesktop = useIsDesktop();
 
   //Sell
   useEffect(() => {
@@ -89,13 +92,21 @@ const OrderList: FC = () => {
           </tr>
         </thead>
         <tbody>
-          {sellData.map(({ price, amount, total }, index) => (
-            <Item key={index} className="sell">
-              <td>{price}</td>
-              <td>{amount}</td>
-              <td>{total}</td>
-            </Item>
-          ))}
+          {isDesktop
+            ? sellData.slice(0, 5).map(({ price, amount, total }, index) => (
+                <Item key={index} className="sell">
+                  <td>{price}</td>
+                  <td>{amount}</td>
+                  <td>{total}</td>
+                </Item>
+              ))
+            : sellData.map(({ price, amount, total }, index) => (
+                <Item key={index} className="sell">
+                  <td>{price}</td>
+                  <td>{amount}</td>
+                  <td>{total}</td>
+                </Item>
+              ))}
         </tbody>
       </TableContainer>
 
@@ -110,13 +121,21 @@ const OrderList: FC = () => {
 
       <table style={{ width: "100%" }}>
         <tbody>
-          {buyData.map(({ price, amount, total }, index) => (
-            <Item key={index} className="buy">
-              <td>{price}</td>
-              <td>{amount}</td>
-              <td>{total}</td>
-            </Item>
-          ))}
+          {isDesktop
+            ? buyData.slice(0, 5).map(({ price, amount, total }, index) => (
+                <Item key={index} className="buy">
+                  <td>{price}</td>
+                  <td>{amount}</td>
+                  <td>{total}</td>
+                </Item>
+              ))
+            : buyData.map(({ price, amount, total }, index) => (
+                <Item key={index} className="buy">
+                  <td>{price}</td>
+                  <td>{amount}</td>
+                  <td>{total}</td>
+                </Item>
+              ))}
         </tbody>
       </table>
     </OrderListContainer>
