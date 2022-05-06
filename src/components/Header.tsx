@@ -4,8 +4,14 @@ import { ReactComponent as Menu } from "../svg/menu.svg";
 import { ReactComponent as Question } from "../svg/question.svg";
 import { ReactComponent as Setting } from "../svg/setting.svg";
 import { HeaderContainer, BoxHeader } from "../style/HeaderStyled";
+import { useIsDesktop } from "../utils/useIsDesktop";
+import { ReactComponent as MenuMain } from "../svg/menuMain.svg";
+import useMediaQuery from "../utils/useMedia";
 
 const Header: FC = () => {
+  const isDesktop = useIsDesktop();
+  const nemuMedia = useMediaQuery("(max-width:1212px)");
+
   return (
     <HeaderContainer>
       <BoxHeader className="box-nav">
@@ -25,14 +31,29 @@ const Header: FC = () => {
       </BoxHeader>
 
       <BoxHeader className="box-set">
-        <span>Log in</span>
-        <span className="register">Register</span>
-        <span>Downloads</span>
-        <span>English</span>
-        <span>|</span>
-        <span>USD</span>
-        <Question style={{ width: "25px", margin: "0px 3px" }} />
-        <Setting style={{ width: "25px", margin: "0px 3px" }} />
+        {!nemuMedia ? (
+          <>
+            <span>Log in</span>
+            <span className="register">Register</span>
+            <span>Downloads</span>
+            <span>English</span>
+            <span>|</span>
+            <span>USD</span>
+          </>
+        ) : (
+          <>
+            {!isDesktop ? (
+              <>
+                <span>Log in</span>
+                <span className="register">Register</span>
+              </>
+            ) : null}
+            <MenuMain style={{ width: "20px", marginRight: "15px" }} />
+          </>
+        )}
+
+        <Question style={{ width: "25px", marginRight: "10px" }} />
+        <Setting style={{ width: "25px", marginRight: "20px" }} />
       </BoxHeader>
     </HeaderContainer>
   );
