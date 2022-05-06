@@ -16,7 +16,7 @@ import Limit from "./orderForms/Limit";
 import Market from "./orderForms/Market";
 import StopLimit from "./orderForms/StopLimit";
 import classNames from "classnames";
-import useMediaQuery from "../utils/useMedia";
+import { useIsDesktop } from "../utils/useIsDesktop";
 
 interface PropsFormType {
   orderType: string;
@@ -40,25 +40,15 @@ const FormType: FC<PropsFormType> = ({ orderType, listType }) => {
       <RadioForm>
         <div className="line">
           <label>
-            <input type="radio" name="btc" readOnly checked />
+            <input type="radio" name={orderType} readOnly checked />
             <div />
           </label>
-          <label>
-            <input type="radio" name="btc" />
-            <div />
-          </label>
-          <label>
-            <input type="radio" name="btc" />
-            <div />
-          </label>
-          <label>
-            <input type="radio" name="btc" />
-            <div />
-          </label>
-          <label>
-            <input type="radio" name="btc" />
-            <div />
-          </label>
+          {Array.from({ length: 4 }, (_, index) => (
+            <label key={index}>
+              <input type="radio" name={orderType} />
+              <div />
+            </label>
+          ))}
         </div>
       </RadioForm>
 
@@ -75,7 +65,7 @@ const OrderForm: FC = () => {
   const [orderType, setOrderType] = useState("buy");
   const [listType, setlistType] = useState("limit");
 
-  const isMedia = useMediaQuery("(max-width:1024px)");
+  const isMedia = useIsDesktop();
 
   const changeHeader = (type: string) => {
     setlistType(type);
@@ -84,7 +74,6 @@ const OrderForm: FC = () => {
   const changeOrder = (type: string) => {
     setOrderType(type);
   };
-  console.log(orderType);
 
   return (
     <OrderTypeForm>
