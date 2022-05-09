@@ -7,12 +7,15 @@ import {
 } from "../style/DailyHistoryStyled";
 import { randomNumber } from "../utils/RandomNumber";
 import { randomColor } from "../utils/RandomColor";
+import { useIsDesktop } from "../utils/useIsDesktop";
 
 const DailyHistory: FC = () => {
   const [price, setPrice] = useState({
     value: randomNumber(39000, 40000),
     color: randomColor(),
   });
+
+  const isDesktop = useIsDesktop();
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -61,12 +64,14 @@ const DailyHistory: FC = () => {
         </div>
       </SectionDaily>
 
-      <SectionDaily className="right">
-        <div>
-          <Play style={{ width: "1.2em", marginRight: "5px" }} />
-          <p>Spot Tutorial</p>
-        </div>
-      </SectionDaily>
+      {!isDesktop ? (
+        <SectionDaily className="right">
+          <div>
+            <Play style={{ width: "1.2em", marginRight: "5px" }} />
+            <p>Spot Tutorial</p>
+          </div>
+        </SectionDaily>
+      ) : null}
     </DailyHostoryContainer>
   );
 };

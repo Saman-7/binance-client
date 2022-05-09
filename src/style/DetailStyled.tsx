@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const HeaderDetails = styled.div`
   display: flex;
   color: #848e9c;
-  margin-left: 25px;
+  padding-left: 20px;
 
   & span {
     margin-right: 25px;
