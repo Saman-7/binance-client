@@ -6,28 +6,33 @@ import { ReactComponent as Setting } from "../svg/setting.svg";
 import { HeaderContainer, BoxHeader } from "../style/HeaderStyled";
 import { useIsDesktop } from "../utils/useIsDesktop";
 import { ReactComponent as MenuMain } from "../svg/menuMain.svg";
-import useMediaQuery from "../utils/useMedia";
+import useMediaQuery from "../utils/useMediaQuery";
 
 const Header: FC = () => {
   const isDesktop = useIsDesktop();
   const nemuMedia = useMediaQuery("(max-width:1212px)");
+  const hiddenHeader = useMediaQuery("(max-width:950px)");
 
   return (
     <HeaderContainer>
       <BoxHeader className="box-nav">
         <BinanceLogo style={{ width: "120px", margin: "0px 15px" }} />
-        <Menu style={{ width: "20px", margin: "0px 10px" }} />
-        <span>
-          Buy Crypto<span>EUR</span>
-        </span>
-        <span>Markets</span>
-        <span>Trade</span>
-        <span>Derivatives</span>
-        <span>Earn</span>
-        <span>Finance</span>
-        <span>
-          NFT<span>New</span>
-        </span>
+        {!hiddenHeader ? (
+          <>
+            <Menu style={{ width: "20px", margin: "0px 10px" }} />
+            <span>
+              Buy Crypto<span>EUR</span>
+            </span>
+            <span>Markets</span>
+            <span>Trade</span>
+            <span>Derivatives</span>
+            <span>Earn</span>
+            <span>Finance</span>
+            <span>
+              NFT<span>New</span>
+            </span>
+          </>
+        ) : null}
       </BoxHeader>
 
       <BoxHeader className="box-set">
