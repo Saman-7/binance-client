@@ -55,3 +55,19 @@
       "footer footer footer";
   }
 }
+
+@media (max-width: 767px) {
+  .app {
+    grid-template-columns: 1fr;
+    grid-template-rows: 64px 150px;
+    grid-template-areas:
+      "header"
+      "daily"
+      "main"
+      "chart"
+      "orderList"
+      "trade"
+      "detail"
+      "footer";
+  }
+}
