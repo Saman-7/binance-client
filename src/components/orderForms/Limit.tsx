@@ -1,10 +1,11 @@
 import { FC } from "react";
 import { ItemForm } from "../../style/OrderFormStyled";
+import { ORDERS } from "../OrderForm";
 
-const Limit: FC<{ type: string }> = ({ type }) => {
+const Limit: FC<{ type: ORDERS }> = ({ type }) => {
   return (
     <>
-      {type === "buy" ? (
+      {type === ORDERS.BUY ? (
         <>
           <ItemForm>
             <span>Price</span>
@@ -19,7 +20,7 @@ const Limit: FC<{ type: string }> = ({ type }) => {
         </>
       ) : null}
 
-      {type === "sell" ? (
+      {type === ORDERS.SELL ? (
         <>
           <ItemForm>
             <span>Price</span>

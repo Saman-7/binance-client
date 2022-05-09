@@ -1,10 +1,11 @@
 import { FC } from "react";
 import { ItemForm } from "../../style/OrderFormStyled";
+import { ORDERS } from "../OrderForm";
 
-const Market: FC<{ type: string }> = ({ type }) => {
+const Market: FC<{ type: ORDERS }> = ({ type }) => {
   return (
     <>
-      {type === "buy" ? (
+      {type === ORDERS.BUY ? (
         <>
           <ItemForm className="disabled">
             <span>Price</span>
@@ -20,7 +21,7 @@ const Market: FC<{ type: string }> = ({ type }) => {
         </>
       ) : null}
 
-      {type === "sell" ? (
+      {type === ORDERS.SELL ? (
         <>
           <ItemForm className="disabled">
             <span>Price</span>

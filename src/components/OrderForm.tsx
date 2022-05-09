@@ -18,9 +18,20 @@ import StopLimit from "./orderForms/StopLimit";
 import classNames from "classnames";
 import { useIsDesktop } from "../utils/useIsDesktop";
 
+export enum ORDERS {
+  BUY,
+  SELL,
+}
+
+enum FORMS {
+  LIMIT,
+  MARKET,
+  STOP_LIMIT,
+}
+
 interface PropsFormType {
-  orderType: string;
-  listType: string;
+  orderType: ORDERS;
+  listType: FORMS;
 }
 
 const FormType: FC<PropsFormType> = ({ orderType, listType }) => {
@@ -28,24 +39,24 @@ const FormType: FC<PropsFormType> = ({ orderType, listType }) => {
     <div>
       <NameHeader>
         <span>Avbl</span>
-        <span>{orderType === "buy" ? "-USDT" : "-BTC"}</span>
+        <span>{orderType === ORDERS.BUY ? "-USDT" : "-BTC"}</span>
       </NameHeader>
 
       <InputForm>
-        {listType === "limit" ? <Limit type={orderType} /> : null}
-        {listType === "market" ? <Market type={orderType} /> : null}
-        {listType === "stop-limit" ? <StopLimit type={orderType} /> : null}
+        {listType === FORMS.LIMIT ? <Limit type={orderType} /> : null}
+        {listType === FORMS.MARKET ? <Market type={orderType} /> : null}
+        {listType === FORMS.STOP_LIMIT ? <StopLimit type={orderType} /> : null}
       </InputForm>
 
       <RadioForm>
         <div className="line">
           <label>
-            <input type="radio" name={orderType} readOnly checked />
+            <input type="radio" name={String(orderType)} readOnly checked />
             <div />
           </label>
           {Array.from({ length: 4 }, (_, index) => (
             <label key={index}>
-              <input type="radio" name={orderType} />
+              <input type="radio" name={String(orderType)} />
               <div />
             </label>
           ))}
@@ -62,18 +73,10 @@ const FormType: FC<PropsFormType> = ({ orderType, listType }) => {
 };
 
 const OrderForm: FC = () => {
-  const [orderType, setOrderType] = useState("buy");
-  const [listType, setlistType] = useState("limit");
+  const [orderType, setOrderType] = useState<ORDERS>(ORDERS.BUY);
+  const [listType, setlistType] = useState<FORMS>(FORMS.LIMIT);
 
   const isMedia = useIsDesktop();
-
-  const changeHeader = (type: string) => {
-    setlistType(type);
-  };
-
-  const changeOrder = (type: string) => {
-    setOrderType(type);
-  };
 
   return (
     <OrderTypeForm>
@@ -91,14 +94,16 @@ const OrderForm: FC = () => {
       {isMedia ? (
         <ButtonBuySell>
           <div
-            className={classNames("buy", { active: orderType === "buy" })}
-            onClick={() => changeOrder("buy")}
+            className={classNames("buy", { active: orderType === ORDERS.BUY })}
+            onClick={() => setOrderType(ORDERS.BUY)}
           >
             BUY
           </div>
           <div
-            className={classNames("sell", { active: orderType === "sell" })}
-            onClick={() => changeOrder("sell")}
+            className={classNames("sell", {
+              active: orderType === ORDERS.SELL,
+            })}
+            onClick={() => setOrderType(ORDERS.SELL)}
           >
             SELL
           </div>
@@ -107,20 +112,20 @@ const OrderForm: FC = () => {
 
       <ValueHeader>
         <span
-          className={classNames({ active: listType === "limit" })}
-          onClick={() => changeHeader("limit")}
+          className={classNames({ active: listType === FORMS.LIMIT })}
+          onClick={() => setlistType(FORMS.LIMIT)}
         >
           Limit
         </span>
         <span
-          className={classNames({ active: listType === "market" })}
-          onClick={() => changeHeader("market")}
+          className={classNames({ active: listType === FORMS.MARKET })}
+          onClick={() => setlistType(FORMS.MARKET)}
         >
           Market
         </span>
         <span
-          className={classNames({ active: listType === "stop-limit" })}
-          onClick={() => changeHeader("stop-limit")}
+          className={classNames({ active: listType === FORMS.STOP_LIMIT })}
+          onClick={() => setlistType(FORMS.STOP_LIMIT)}
         >
           Stop-Limit
         </span>
@@ -132,8 +137,8 @@ const OrderForm: FC = () => {
           <FormType orderType={orderType} listType={listType} />
         ) : (
           <>
-            <FormType orderType="buy" listType={listType} />
-            <FormType orderType="sell" listType={listType} />
+            <FormType orderType={ORDERS.BUY} listType={listType} />
+            <FormType orderType={ORDERS.SELL} listType={listType} />
           </>
         )}
       </InputFormContainer>
