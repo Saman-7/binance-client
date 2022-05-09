@@ -3,12 +3,9 @@ import { FC, lazy, Suspense } from "react";
 import Loading from "./components/Loading";
 const Header = lazy(() => import("./components/Header"));
 const DailyHistory = lazy(() => import("./components/DailyHistory"));
-const OrderList = lazy(() => import("./components/OrderList"));
-const Chart = lazy(() => import("./components/Chart"));
-const OrderForm = lazy(() => import("./components/OrderForm"));
-const Market = lazy(() => import("./components/MarketTrades"));
 const Details = lazy(() => import("./components/Details"));
 const Footer = lazy(() => import("./components/Footer"));
+const Main = lazy(() => import("./components/Main"));
 
 const App: FC = () => {
   //
@@ -17,10 +14,7 @@ const App: FC = () => {
       <Suspense fallback={<Loading />}>
         <Header />
         <DailyHistory />
-        <OrderList />
-        <Chart />
-        <OrderForm />
-        <Market />
+        <Main />
         <Details />
         <Footer />
       </Suspense>
