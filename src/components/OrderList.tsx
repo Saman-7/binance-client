@@ -10,10 +10,12 @@ import {
   TableContainer,
   Item,
   PriceContainer,
+  Lists,
 } from "../style/OrderListStyled";
 import { FC, useEffect, useState } from "react";
 import { randomColor } from "../utils/RandomColor";
 import { useIsDesktop } from "../utils/useIsDesktop";
+import { useIsMobile } from "../utils/useIsMobile";
 
 const randomItem = () => {
   const price = randomNumber(41000, 42000);
@@ -38,6 +40,7 @@ const OrderList: FC = () => {
   });
 
   const isDesktop = useIsDesktop();
+  const isMobile = useIsMobile();
 
   //Sell
   useEffect(() => {
@@ -78,66 +81,87 @@ const OrderList: FC = () => {
         </div>
         <div className="menu">
           <p>0.01</p>
-          <DotMenu className="dot-menu" />
+          {!isMobile && <DotMenu className="dot-menu" />}
         </div>
       </HeaderLogo>
 
-      <TableContainer>
+      <Lists>
         {/* List */}
-        <thead>
-          <tr className="header-list">
-            <th>Price(USDT)</th>
-            <th>Amount(BTC)</th>
-            <th>Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          {isDesktop
-            ? sellData.slice(0, 5).map(({ price, amount, total }, index) => (
-                <Item key={index} className="sell">
-                  <td>{price}</td>
-                  <td>{amount}</td>
-                  <td>{total}</td>
-                </Item>
-              ))
-            : sellData.map(({ price, amount, total }, index) => (
-                <Item key={index} className="sell">
-                  <td>{price}</td>
-                  <td>{amount}</td>
-                  <td>{total}</td>
-                </Item>
-              ))}
-        </tbody>
-      </TableContainer>
+        <TableContainer>
+          <thead>
+            <tr className="header-list">
+              <th>Price(USDT)</th>
+              <th>Amount(BTC)</th>
+              {!isMobile && <th>Total</th>}
+            </tr>
+          </thead>
+          <tbody>
+            {isDesktop && !isMobile
+              ? sellData.slice(0, 5).map(({ price, amount, total }, index) => (
+                  <Item key={index} className="sell">
+                    <td className="price">{price}</td>
+                    <td>{amount}</td>
+                    <td>{total}</td>
+                  </Item>
+                ))
+              : sellData.map(({ price, amount, total }, index) => (
+                  <Item key={index} className="sell">
+                    <td className="price">{price}</td>
+                    <td>{amount}</td>
+                    {!isMobile && <td>{total}</td>}
+                  </Item>
+                ))}
+          </tbody>
+        </TableContainer>
 
-      {/* Price */}
-      <PriceContainer>
-        <div>
-          <p style={{ color: price.color }}>{price.value}.75</p>
-          <p>${price.value}.75</p>
-        </div>
-        <p>More</p>
-      </PriceContainer>
+        {/* Price */}
+        {!isMobile && (
+          <PriceContainer>
+            <div>
+              <p style={{ color: price.color }}>{price.value}.75</p>
+              <p>${price.value}.75</p>
+            </div>
+            <p>More</p>
+          </PriceContainer>
+        )}
 
-      <table style={{ width: "100%" }}>
-        <tbody>
-          {isDesktop
-            ? buyData.slice(0, 5).map(({ price, amount, total }, index) => (
-                <Item key={index} className="buy">
-                  <td>{price}</td>
-                  <td>{amount}</td>
-                  <td>{total}</td>
-                </Item>
-              ))
-            : buyData.map(({ price, amount, total }, index) => (
-                <Item key={index} className="buy">
-                  <td>{price}</td>
-                  <td>{amount}</td>
-                  <td>{total}</td>
-                </Item>
-              ))}
-        </tbody>
-      </table>
+        <TableContainer>
+          {isMobile && (
+            <thead>
+              <tr className="header-list">
+                <th>Amount(BTC)</th>
+                <th>Price(USDT)</th>
+              </tr>
+            </thead>
+          )}
+          <tbody>
+            {isDesktop && !isMobile
+              ? buyData.slice(0, 5).map(({ price, amount, total }, index) => (
+                  <Item key={index} className="buy">
+                    <td className="price">{price}</td>
+                    <td>{amount}</td>
+                    <td>{total}</td>
+                  </Item>
+                ))
+              : buyData.map(({ price, amount, total }, index) => (
+                  <Item key={index} className="buy">
+                    {!isMobile ? (
+                      <>
+                        <td className="price">{price}</td>
+                        <td>{amount}</td>
+                        <td>{total}</td>
+                      </>
+                    ) : (
+                      <>
+                        <td>{amount}</td>
+                        <td className="price">{price}</td>
+                      </>
+                    )}
+                  </Item>
+                ))}
+          </tbody>
+        </TableContainer>
+      </Lists>
     </OrderListContainer>
   );
 };

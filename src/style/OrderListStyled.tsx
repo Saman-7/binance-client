@@ -6,6 +6,10 @@ export const OrderListContainer = styled.div`
   padding: 0px 20px;
   font-size: 12px;
   border-right: 1px #252930 solid;
+
+  @media (max-width: 767px) {
+    border-bottom: 7px #14151a solid;
+  }
 `;
 
 export const HeaderLogo = styled.div`
@@ -33,6 +37,25 @@ export const HeaderLogo = styled.div`
       height: 70%;
     }
   }
+
+  @media (max-width: 767px) {
+    & .logos {
+      width: 70%;
+    }
+    & .menu {
+      justify-content: center;
+      & p {
+        font-size: 14px;
+      }
+    }
+  }
+`;
+
+export const Lists = styled.div`
+  @media (max-width: 767px) {
+    display: flex;
+    flex-direction: row-reverse;
+  }
 `;
 
 export const TableContainer = styled.table`
@@ -51,6 +74,10 @@ export const TableContainer = styled.table`
       }
     }
   }
+
+  @media (max-width: 767px) {
+    margin: 0px 5px;
+  }
 `;
 
 export const Item = styled.tr`
@@ -65,10 +92,10 @@ export const Item = styled.tr`
     }
   }
 
-  &.sell :first-child {
+  &.sell .price {
     color: #dc4156;
   }
-  &.buy :first-child {
+  &.buy .price {
     color: #0fbe79;
   }
 `;
