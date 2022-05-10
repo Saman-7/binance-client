@@ -10,6 +10,10 @@ export const HeaderContainer = styled.header`
   color: white;
   border-bottom: 1px #252930 solid;
   font-size: 14px;
+
+  @media (max-width: 767px) {
+    border-bottom: 7px #14151a solid;
+  }
 `;
 
 export const BoxHeader = styled.div`

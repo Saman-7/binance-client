@@ -7,17 +7,19 @@ import { HeaderContainer, BoxHeader } from "../style/HeaderStyled";
 import { useIsDesktop } from "../utils/useIsDesktop";
 import { ReactComponent as MenuMain } from "../svg/menuMain.svg";
 import useMediaQuery from "../utils/useMediaQuery";
+import { useIsMobile } from "../utils/useIsMobile";
 
 const Header: FC = () => {
   const isDesktop = useIsDesktop();
-  const nemuMedia = useMediaQuery("(max-width:1212px)");
+  const menuMedia = useMediaQuery("(max-width:1212px)");
   const hiddenHeader = useMediaQuery("(max-width:950px)");
+  const isMobile = useIsMobile();
 
   return (
     <HeaderContainer>
       <BoxHeader className="box-nav">
         <BinanceLogo style={{ width: "120px", margin: "0px 15px" }} />
-        {!hiddenHeader ? (
+        {!hiddenHeader && (
           <>
             <Menu style={{ width: "20px", margin: "0px 10px" }} />
             <span>
@@ -32,11 +34,11 @@ const Header: FC = () => {
               NFT<span>New</span>
             </span>
           </>
-        ) : null}
+        )}
       </BoxHeader>
 
       <BoxHeader className="box-set">
-        {!nemuMedia ? (
+        {!menuMedia ? (
           <>
             <span>Log in</span>
             <span className="register">Register</span>
@@ -47,18 +49,22 @@ const Header: FC = () => {
           </>
         ) : (
           <>
-            {!isDesktop ? (
+            {!isDesktop && (
               <>
                 <span>Log in</span>
                 <span className="register">Register</span>
               </>
-            ) : null}
+            )}
             <MenuMain style={{ width: "20px", marginRight: "15px" }} />
           </>
         )}
 
-        <Question style={{ width: "25px", marginRight: "10px" }} />
-        <Setting style={{ width: "25px", marginRight: "20px" }} />
+        {!isMobile && (
+          <>
+            <Question style={{ width: "25px", marginRight: "10px" }} />
+            <Setting style={{ width: "25px", marginRight: "20px" }} />
+          </>
+        )}
       </BoxHeader>
     </HeaderContainer>
   );
