@@ -56,4 +56,13 @@ export const RightFooter = styled.div`
   & div span {
     margin-left: 7px;
   }
+
+  @media (max-width: 767px) {
+    width: 100%;
+    justify-content: space-between;
+
+    & div {
+      border-left: none;
+    }
+  }
 `;
