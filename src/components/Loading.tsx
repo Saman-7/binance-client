@@ -9,6 +9,7 @@ const LoadingContainer = styled.div`
   width: 100%;
   height: 100vh;
   z-index: 1000;
+  background-color: #161a1e;
 `;
 
 const Column = styled.span`
