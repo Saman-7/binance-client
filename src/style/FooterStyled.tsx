@@ -13,6 +13,11 @@ export const MainFooter = styled.div`
   padding: 2px 10px;
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 767px) {
+    padding: 0px;
+    border-top: none;
+  }
 `;
 
 export const LeftFooter = styled.div`
@@ -60,6 +65,8 @@ export const RightFooter = styled.div`
   @media (max-width: 767px) {
     width: 100%;
     justify-content: space-between;
+    padding: 5px 0px;
+    background-color: #23282d;
 
     & div {
       border-left: none;
