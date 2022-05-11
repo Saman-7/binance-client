@@ -63,42 +63,42 @@ export const ButtonBuySell = styled.div`
     padding: 7px 0px;
     color: #848e9c;
   }
+`;
 
-  & .buy {
-    position: relative;
-    cursor: pointer;
-    &.active {
-      background-color: #0ecb81;
-      color: white;
-      &:after {
-        content: "";
-        position: absolute;
-        left: 100%;
-        width: 0px;
-        height: 0px;
-        border-top: 15px solid transparent;
-        border-bottom: 15px solid transparent;
-        border-left: 15px solid #0ecb81;
-      }
+export const BuyButton = styled.div`
+  position: relative;
+  cursor: pointer;
+  &.active {
+    background-color: #0ecb81;
+    color: white;
+    &:after {
+      content: "";
+      position: absolute;
+      left: 100%;
+      width: 0px;
+      height: 0px;
+      border-top: 15px solid transparent;
+      border-bottom: 15px solid transparent;
+      border-left: 15px solid #0ecb81;
     }
   }
+`;
 
-  & .sell {
-    position: relative;
-    cursor: pointer;
-    &.active {
-      background-color: #f6465d;
-      color: white;
-      &:after {
-        content: "";
-        position: absolute;
-        right: 100%;
-        width: 0px;
-        height: 0px;
-        border-top: 15px solid transparent;
-        border-bottom: 15px solid transparent;
-        border-right: 15px solid #f6465d;
-      }
+export const SellButton = styled.div`
+  position: relative;
+  cursor: pointer;
+  &.active {
+    background-color: #f6465d;
+    color: white;
+    &:after {
+      content: "";
+      position: absolute;
+      right: 100%;
+      width: 0px;
+      height: 0px;
+      border-top: 15px solid transparent;
+      border-bottom: 15px solid transparent;
+      border-right: 15px solid #f6465d;
     }
   }
 `;
@@ -251,6 +251,30 @@ export const RadioForm = styled.div`
   }
 `;
 
+export const PercentButton = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px 15px 10px 15px;
+
+  & span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #2b3139;
+    margin: 0px 4px;
+    border-radius: 4px;
+    padding: 4px 0px;
+    color: #848e9c;
+
+    &:hover {
+      color: #f0aa17;
+      cursor: pointer;
+    }
+  }
+`;
+
 export const ButtonLogin = styled.div`
   display: flex;
   justify-content: center;
@@ -268,5 +292,9 @@ export const ButtonLogin = styled.div`
   }
   &:hover {
     cursor: pointer;
+  }
+
+  @media (max-width: 767px) {
+    margin-bottom: 15px;
   }
 `;

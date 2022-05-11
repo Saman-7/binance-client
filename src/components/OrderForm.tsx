@@ -11,12 +11,17 @@ import {
   ButtonLogin,
   InputFormContainer,
   ButtonBuySell,
+  BuyButton,
+  SellButton,
+  PercentButton,
 } from "../style/OrderFormStyled";
 import Limit from "./orderForms/Limit";
 import Market from "./orderForms/Market";
 import StopLimit from "./orderForms/StopLimit";
 import classNames from "classnames";
 import { useIsDesktop } from "../utils/useIsDesktop";
+import { useIsMobile } from "../utils/useIsMobile";
+import { ReactComponent as CloseMenuLogo } from "../svg/closeMenu.svg";
 
 export enum ORDERS {
   BUY,
@@ -35,6 +40,8 @@ interface PropsFormType {
 }
 
 const FormType: FC<PropsFormType> = ({ orderType, listType }) => {
+  const isMobile = useIsMobile();
+
   return (
     <div>
       <NameHeader>
@@ -48,20 +55,29 @@ const FormType: FC<PropsFormType> = ({ orderType, listType }) => {
         {listType === FORMS.STOP_LIMIT ? <StopLimit type={orderType} /> : null}
       </InputForm>
 
-      <RadioForm>
-        <div className="line">
-          <label>
-            <input type="radio" name={String(orderType)} readOnly checked />
-            <div />
-          </label>
-          {Array.from({ length: 4 }, (_, index) => (
-            <label key={index}>
-              <input type="radio" name={String(orderType)} />
+      {!isMobile ? (
+        <RadioForm>
+          <div className="line">
+            <label>
+              <input type="radio" name={String(orderType)} readOnly checked />
               <div />
             </label>
-          ))}
-        </div>
-      </RadioForm>
+            {Array.from({ length: 4 }, (_, index) => (
+              <label key={index}>
+                <input type="radio" name={String(orderType)} />
+                <div />
+              </label>
+            ))}
+          </div>
+        </RadioForm>
+      ) : (
+        <PercentButton>
+          <span>25%</span>
+          <span>50%</span>
+          <span>75%</span>
+          <span>100%</span>
+        </PercentButton>
+      )}
 
       <ButtonLogin>
         <span>Log In</span>
@@ -72,43 +88,58 @@ const FormType: FC<PropsFormType> = ({ orderType, listType }) => {
   );
 };
 
-const OrderForm: FC = () => {
-  const [orderType, setOrderType] = useState<ORDERS>(ORDERS.BUY);
+const OrderForm: FC<{ defaultType?: ORDERS; closeMenu?: Function }> = ({
+  defaultType,
+  closeMenu,
+}) => {
+  const [orderType, setOrderType] = useState<ORDERS>(
+    defaultType ? defaultType : ORDERS.BUY
+  );
   const [listType, setlistType] = useState<FORMS>(FORMS.LIMIT);
 
-  const isMedia = useIsDesktop();
+  const isDesktop = useIsDesktop();
+  const isMobile = useIsMobile();
 
   return (
     <OrderTypeForm>
       <ItemHeader>
         <div className="spot">Spot</div>
-        <div className="margin">
-          <span>Margin</span>
-          <span>5x</span>
-          <DotMenu
-            style={{ width: "20px", color: "#848e9c", margin: "0px 15px" }}
+        {!isMobile ? (
+          <div className="margin">
+            <span>Margin</span>
+            <span>5x</span>
+            <DotMenu
+              style={{ width: "20px", color: "#848e9c", margin: "0px 15px" }}
+            />
+          </div>
+        ) : (
+          <CloseMenuLogo
+            style={{ width: "20px", marginRight: "15px" }}
+            onClick={() => {
+              closeMenu && closeMenu();
+            }}
           />
-        </div>
+        )}
       </ItemHeader>
 
-      {isMedia ? (
+      {isDesktop && (
         <ButtonBuySell>
-          <div
+          <BuyButton
             className={classNames("buy", { active: orderType === ORDERS.BUY })}
             onClick={() => setOrderType(ORDERS.BUY)}
           >
             BUY
-          </div>
-          <div
+          </BuyButton>
+          <SellButton
             className={classNames("sell", {
               active: orderType === ORDERS.SELL,
             })}
             onClick={() => setOrderType(ORDERS.SELL)}
           >
             SELL
-          </div>
+          </SellButton>
         </ButtonBuySell>
-      ) : null}
+      )}
 
       <ValueHeader>
         <span
@@ -133,7 +164,7 @@ const OrderForm: FC = () => {
       </ValueHeader>
 
       <InputFormContainer>
-        {isMedia ? (
+        {isDesktop ? (
           <FormType orderType={orderType} listType={listType} />
         ) : (
           <>
