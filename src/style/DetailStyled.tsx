@@ -34,4 +34,8 @@ export const BodyDetails = styled.div`
     color: #f0b90b;
     font-size: 14px;
   }
+
+  @media (max-width: 767px) {
+    margin-bottom: 70px;
+  }
 `;
