@@ -45,7 +45,6 @@ export const CurrencyHeader = styled.div`
 
 export const TableContainer = styled.table`
   display: block;
-  width: 100%;
   border-bottom: 1px #252930 solid;
 
   & tbody {
@@ -53,16 +52,22 @@ export const TableContainer = styled.table`
     overflow: auto;
     height: 280px;
   }
+
+  & thead {
+    display: block;
+  }
 `;
 
 export const ValueHeader = styled.tr`
   color: #848e9c;
   font-size: 12px;
+  display: block;
 
   & th {
     text-align: right;
-    padding: 0px 30px 5px 10px;
-    width: 100%;
+    padding: 0px 20px 5px 10px;
+    display: inline-block;
+    width: calc(100% / 3);
   }
 
   & th:first-child {
@@ -74,11 +79,13 @@ export const Item = styled.tr`
   padding: 1px 0px;
   color: #adb3bc;
   font-size: 12px;
+  display: block;
 
   & td {
     text-align: right;
     padding: 3px 10px;
-    width: 100%;
+    display: inline-block;
+    width: calc(100% / 3);
     span {
       color: white;
     }
@@ -86,7 +93,7 @@ export const Item = styled.tr`
 
   & td:first-child {
     text-align: left;
-    display: flex;
+    display: inline-flex;
   }
 
   & td.green {

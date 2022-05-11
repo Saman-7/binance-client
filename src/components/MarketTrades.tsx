@@ -60,7 +60,7 @@ const Market = () => {
 
   return (
     <MarketContainer>
-      {!isDesktop ? (
+      {!isDesktop && (
         <>
           {/* Input */}
           <InputHeader>
@@ -108,7 +108,7 @@ const Market = () => {
             <span>My Trades</span>
           </HeaderTrades>
         </>
-      ) : null}
+      )}
 
       {/* Table Market Trades */}
       <TableContainer>
@@ -132,7 +132,7 @@ const Market = () => {
         </tbody>
       </TableContainer>
 
-      {!isDesktop ? (
+      {!isDesktop && (
         <MarketActivities>
           <div>
             <span>Market Activities</span>
@@ -190,7 +190,7 @@ const Market = () => {
             </tbody>
           </table>
         </MarketActivities>
-      ) : null}
+      )}
     </MarketContainer>
   );
 };
