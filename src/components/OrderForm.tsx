@@ -88,10 +88,12 @@ const FormType: FC<PropsFormType> = ({ orderType, listType }) => {
   );
 };
 
-const OrderForm: FC<{ defaultType?: ORDERS; closeMenu?: Function }> = ({
-  defaultType,
-  closeMenu,
-}) => {
+interface PropsOrderForm {
+  defaultType?: ORDERS;
+  closeMenu?: Function;
+}
+
+const OrderForm: FC<PropsOrderForm> = ({ defaultType, closeMenu }) => {
   const [orderType, setOrderType] = useState<ORDERS>(
     defaultType ? defaultType : ORDERS.BUY
   );
@@ -116,7 +118,7 @@ const OrderForm: FC<{ defaultType?: ORDERS; closeMenu?: Function }> = ({
           <CloseMenuLogo
             style={{ width: "20px", marginRight: "15px" }}
             onClick={() => {
-              closeMenu && closeMenu();
+              closeMenu?.();
             }}
           />
         )}
