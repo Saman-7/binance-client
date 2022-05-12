@@ -3,6 +3,18 @@ import styled from "styled-components";
 export const OrderTypeForm = styled.form`
   grid-area: orderForm;
   background-color: #1e2026;
+
+  @media (max-width: 767px) {
+    animation: changeY 0.5s ease-out 1;
+    @keyframes changeY {
+      0% {
+        transform: translateY(100%);
+      }
+      100% {
+        transform: translateY(0%);
+      }
+    }
+  }
 `;
 
 export const ItemHeader = styled.div`
