@@ -4,6 +4,15 @@ import ApexCharts from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
 import { apexOptions } from "../utils/ApexOptions";
 import Loading from "./Loading";
+import styled from "styled-components";
+
+const ChartContainer = styled.div`
+  grid-area: chart;
+
+  @media (max-width: 767px) {
+    grid-area: container;
+  }
+`;
 
 const Chart: FC = () => {
   //
@@ -27,9 +36,9 @@ const Chart: FC = () => {
   if (loading) return <Loading />;
   if (error) return <h1>Error :/</h1>;
   return (
-    <div style={{ gridArea: "chart" }}>
+    <ChartContainer>
       <ApexCharts series={series} options={apexOptions} type="candlestick" />
-    </div>
+    </ChartContainer>
   );
 };
 

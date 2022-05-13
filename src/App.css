@@ -14,6 +14,10 @@
   font-family: "IBM", sans-serif;
 }
 
+body {
+  background-color: #161a1e;
+}
+
 .app {
   min-height: 100vh;
   display: grid;
@@ -26,7 +30,6 @@
     "orderList orderForm trade"
     "detail detail detail"
     "footer footer footer";
-  background-color: #161a1e;
 }
 
 ::-webkit-scrollbar {
@@ -59,14 +62,12 @@
 @media (max-width: 767px) {
   .app {
     grid-template-columns: 1fr;
-    grid-template-rows: 64px 150px;
+    grid-template-rows: max-content;
     grid-template-areas:
       "header"
       "daily"
       "main"
-      "chart"
-      "orderList"
-      "trade"
+      "container"
       "detail"
       "footer";
   }

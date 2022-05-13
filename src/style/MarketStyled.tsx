@@ -5,6 +5,10 @@ export const MarketContainer = styled.div`
   padding-top: 10px;
   background-color: #161a1e;
   border-left: 1px #252930 solid;
+
+  @media (max-width: 767px) {
+    grid-area: container;
+  }
 `;
 
 export const InputHeader = styled.div`

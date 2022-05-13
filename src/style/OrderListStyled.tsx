@@ -9,6 +9,7 @@ export const OrderListContainer = styled.div`
 
   @media (max-width: 767px) {
     border-bottom: 7px #14151a solid;
+    grid-area: container;
   }
 `;
 

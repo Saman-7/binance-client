@@ -116,7 +116,7 @@ const OrderForm: FC<PropsOrderForm> = ({ defaultType, closeMenu }) => {
           </div>
         ) : (
           <CloseMenuLogo
-            style={{ width: "20px", marginRight: "15px" }}
+            style={{ width: "20px", marginRight: "15px", cursor: "pointer" }}
             onClick={() => {
               closeMenu?.();
             }}
