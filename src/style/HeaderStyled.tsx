@@ -40,7 +40,7 @@ export const BoxHeader = styled.div`
   }
 
   &.box-set {
-    & span {
+    & > span {
       margin: 0px 10px;
       &:hover:not(.register) {
         color: #f0aa17;
