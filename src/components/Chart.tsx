@@ -1,10 +1,11 @@
 import { useEffect, useState, FC } from "react";
-import { useGetCandles } from "../api/useGetCandles";
+import { PAIRS, useGetPairs } from "../api/useGetCandles";
 import ApexCharts from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
 import { apexOptions } from "../utils/ApexOptions";
 import Loading from "./Loading";
 import styled from "styled-components";
+import ChangePair from "./ChangePair";
 
 const ChartContainer = styled.div`
   grid-area: chart;
@@ -15,13 +16,15 @@ const ChartContainer = styled.div`
 `;
 
 const Chart: FC = () => {
-  //
-  const { loading, error, data } = useGetCandles();
+  const [pair, setPair] = useState<PAIRS>(PAIRS.BTC_USDT);
+
+  const { loading, error, data } = useGetPairs(pair);
+
   const [series, setSeries] = useState<ApexOptions["series"]>([]);
 
   useEffect(() => {
     if (data) {
-      const arrayCandles = data.getCandles.map((candle) => {
+      const arrayCandles = data.getPair.map((candle) => {
         const { startTime, open, high, low, close } = candle;
         return [Number(startTime), [open, high, low, close]] as [
           number,
@@ -34,9 +37,10 @@ const Chart: FC = () => {
   }, [data]);
 
   if (loading) return <Loading />;
-  if (error) return <h1>Error :/</h1>;
+  if (error) console.log(error);
   return (
     <ChartContainer>
+      <ChangePair pair={pair} setPair={setPair} />
       <ApexCharts series={series} options={apexOptions} type="candlestick" />
     </ChartContainer>
   );
