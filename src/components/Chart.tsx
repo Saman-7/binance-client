@@ -1,11 +1,12 @@
-import { useEffect, useState, FC } from "react";
-import { PAIRS, useGetPairs } from "../api/useGetCandles";
+import { useState, FC, useMemo } from "react";
+import { useGetPairs } from "../api/useGetCandles";
 import ApexCharts from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
 import { apexOptions } from "../utils/ApexOptions";
 import Loading from "./Loading";
 import styled from "styled-components";
 import ChangePair from "./ChangePair";
+import { PAIRS } from "../__generated__/globalTypes";
 
 const ChartContainer = styled.div`
   grid-area: chart;
@@ -20,20 +21,15 @@ const Chart: FC = () => {
 
   const { loading, error, data } = useGetPairs(pair);
 
-  const [series, setSeries] = useState<ApexOptions["series"]>([]);
-
-  useEffect(() => {
-    if (data) {
-      const arrayCandles = data.getPair.map((candle) => {
-        const { startTime, open, high, low, close } = candle;
-        return [Number(startTime), [open, high, low, close]] as [
-          number,
-          number[]
-        ];
-      });
-
-      setSeries([{ type: "candlestick", data: arrayCandles }]);
-    }
+  const series = useMemo<ApexOptions["series"]>(() => {
+    const arrayCandles = data?.getPair.map((candle) => {
+      const { startTime, open, high, low, close } = candle;
+      return [Number(startTime), [open, high, low, close]] as [
+        number,
+        number[]
+      ];
+    });
+    return [{ type: "candlestick", data: arrayCandles || [] }];
   }, [data]);
 
   if (loading) return <Loading />;

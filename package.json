@@ -13,7 +13,7 @@
     "@types/react-dom": "^18.0.0",
     "apexcharts": "^3.35.0",
     "classnames": "^2.3.1",
-    "graphql": "^16.3.0",
+    "graphql": "^15.8.0",
     "react": "^18.0.0",
     "react-apexcharts": "^1.4.0",
     "react-dom": "^18.0.0",
@@ -28,7 +28,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "download:schema": "npx apollo service:download --endpoint=http://localhost:3001/graphql graphql-schema.json",
+    "generate:schema": "npx apollo codegen:generate --localSchemaFile=graphql-schema.json --target=typescript --tagName=gql --globalTypesFile=src/__generated__/globalTypes.ts",
+    "generate": "yarn download:schema && yarn generate:schema"
   },
   "eslintConfig": {
     "extends": [
@@ -49,7 +52,9 @@
     ]
   },
   "devDependencies": {
+    "@types/graphql": "^14.5.0",
     "@types/styled-components": "^5.1.25",
-    "@welldone-software/why-did-you-render": "^7.0.1"
+    "@welldone-software/why-did-you-render": "^7.0.1",
+    "apollo": "^2.34.0"
   }
 }
