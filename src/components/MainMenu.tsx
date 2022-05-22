@@ -19,11 +19,12 @@ import {
   MenuItem,
   MenuLogin,
 } from "../style/MainMenuStyled";
+import useMediaQuery from "../utils/useMediaQuery";
 
 const MainMenu: FC<{ showMenu: Function }> = ({ showMenu }) => {
-  const isMobile = useIsMobile();
+  const menuMedia = useMediaQuery("(max-width:1212px)");
 
-  return isMobile ? (
+  return menuMedia ? (
     <MainMenuContainer>
       {/* Close Menu */}
       <CloseMenuContainer>
