@@ -1,5 +1,6 @@
 # Client
 
+`yarn generate` **and**
 `npm start` **or** `yarn start`
 
 # Server
