@@ -1,30 +1,8 @@
 import classNames from "classnames";
 import { FC } from "react";
 import styled from "styled-components";
+import { ChangePairContainer } from "../style/ChangePairStyled";
 import { PAIRS } from "../__generated__/globalTypes";
-
-const ChangePairContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  & span {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 0px;
-    color: #848e9c;
-    border: 1px #252930 solid;
-    font-weight: 700;
-
-    &:hover,
-    &.active {
-      cursor: pointer;
-      color: #f0b901;
-    }
-  }
-`;
 
 interface IChangePairProps {
   setPair: (pair: PAIRS) => void;
