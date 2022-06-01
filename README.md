@@ -1,7 +1,8 @@
 # Client
 
-`yarn generate` **and**
-`npm start` **or** `yarn start`
+- **First Run Server**
+- **Then** `yarn generate`
+- **Then** `npm start` **or** `yarn start`
 
 # Server
 
